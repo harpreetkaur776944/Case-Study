@@ -1,10 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xzaUl5WaxGDvHM9IHJ9OU/LIerX/suRhziKZUgtEiHRdL1DZeoT1JbLlfbspGWzRinkLGeu8kphlnOdiAXdtbg==",
+  "dgSpecHash": "bAlyM3ulla7zSzF7xaYLVYHmCRTua+db4NpPuKCwOO4HhpmvWHrFIjbtGOGQ+1BL2sAexNQ3c95mcGscGNszpw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Dell\\source\\repos\\Case Study\\FedChoice Bank\\FedChoice Bank\\FedChoice Bank.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\Dell\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\Dell\\Source\\Repos\\Case-Study\\FedChoice Bank\\FedChoice Bank\\FedChoice Bank.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }
