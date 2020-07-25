@@ -1,71 +1,96 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
-}
-
-/* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
-}
-
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
-
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
-
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  font-size: 14px;
-}
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-}
-
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
-}
-
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  position: relative;
-  min-height: 100%;
+﻿:root {
+    --dark: #293462;
+    --light: #f6f5f5;
+    --secDark: #4592af;
+    --secLight: #ffc107;
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    margin-left: 0;
+    margin-right: 0;
 }
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+
+.logo {
+    background-color: var(--dark);
+}
+
+.logoheading {
+    padding-top: 12px;
+    padding-left: 12%;
+    padding-bottom: 2px;
+    font-size: 40px;
+    color: var(--secLight);
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+.logoheading_two {
+    color: var(--light);
+    margin-bottom: 0;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+.navul {
+    width: 75%;
+    margin: auto;
+    height: 45px;
+}
+
+.divBottom {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: var(--dark);
+}
+
+.h4Bottom {
+    color: var(--secLight);
+}
+
+.pBottom {
+    color: var(--light);
+    font-family: "Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-size: 1rem;
+    font-size: 12px;
+}
+
+.hrBottom {
+    background-color: var(--secLight);
+    margin-top: 0;
+    height: 1px;
+}
+
+.tableBottom {
+    margin-top: 10px;
+    text-align: left;
+    margin-bottom: 10px;
+    width: 70%;
+    height: 20%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tdBottom {
+    padding-right: 20px;
+}
+
+
+.spanBottom1 {
+    color: var(--light);
+    font-size: 14px;
+    margin-left: 200px;
+}
+
+.spanBottom2 {
+    color: var(--secLight);
+    font-size: 14px;
+}
+
+.footerTable {
+    margin-left: 400px;
+    display: inline;
+}
+.imgBottom{
+    height:20px;
+    width:20px;
 }
