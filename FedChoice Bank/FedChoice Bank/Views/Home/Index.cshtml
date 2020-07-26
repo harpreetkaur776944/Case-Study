@@ -1,5 +1,7 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Http;
+@{
     ViewData["Title"] = "Home Page";
 }
 
-
+<h1>Welcome @Context.Session.GetString("username")</h1>
+@Html.ActionLink("LogOut", "LogOut", "Login")

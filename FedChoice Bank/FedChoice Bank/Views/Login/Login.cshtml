@@ -1,0 +1,36 @@
+﻿@model FedChoice_Bank.Models.Userstore;
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="divTableLogin">
+    <div class="col-md-3">
+        <div>
+            @using (Html.BeginForm("Login","Login",FormMethod.Post))
+            {
+                <table class="tableLogin">
+                    <tr>
+                        <th class="thLogin"><h3>Login</h3></th>
+                    </tr>
+                    <tr>
+                        <td class="tdLogin">
+                            @Html.TextBoxFor(x => x.Login, new { placeholder = "Username", @class = "form-control, inputLogin"})
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tdLogin">
+                            @Html.PasswordFor(x => x.Password, new { placeholder = "Password", @class = "form-control, inputLogin" })
+                            <p class="text-danger">@ViewBag.ErrorMessage</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tdLogin">
+                            <input type="submit" name="login" value="Login" class="btn btn-warning" />
+                        </td>
+                    </tr>
+                </table>
+            }
+            </div>
+    </div>
+</div>

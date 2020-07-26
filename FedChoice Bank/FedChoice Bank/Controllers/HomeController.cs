@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using FedChoice_Bank.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace FedChoice_Bank.Controllers
 {
@@ -20,7 +21,17 @@ namespace FedChoice_Bank.Controllers
 
         public IActionResult Index()
         {
+            if(HttpContext.Session.GetString("username") == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             return View();
+        }
+
+        public IActionResult LogOut()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Login", "Login");
         }
 
         public IActionResult Privacy()
