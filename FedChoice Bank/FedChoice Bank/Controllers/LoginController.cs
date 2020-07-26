@@ -20,7 +20,6 @@ namespace FedChoice_Bank.Controllers
         [HttpPost]
         public IActionResult Login(Userstore u)
         {
-
             if(ModelState.IsValid == true)
             {
                 var credentials = loginDbContext.Userstore.Where(x => x.Login == u.Login && x.Password == u.Password).FirstOrDefault();

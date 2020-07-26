@@ -37,9 +37,9 @@ body {
 
 .divBottom {
     position: absolute;
-    bottom: 5px;
     background-color: var(--dark);
     width: 100%;
+    overflow-y:auto;
 }
 
 .h4Bottom {
@@ -124,6 +124,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    /*margin-top: 100px;*/
+    margin: 100px;
+    
 }
 
