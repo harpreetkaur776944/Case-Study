@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\FedChoice Bank",
-    "\\FedChoice Bank\\FedChoice Bank"
+    "\\FedChoice Bank\\FedChoice Bank",
+    "\\FedChoice Bank\\FedChoice Bank\\Views"
   ],
-  "SelectedNode": "\\FedChoice Bank\\Data",
+  "SelectedNode": "\\FedChoice Bank\\FedChoice Bank.sln",
   "PreviewInSolutionExplorer": false
 }

@@ -22,7 +22,7 @@ namespace FedChoice_Bank.Models
             if (!optionsBuilder.IsConfigured)
             {
 //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Data Source=(local);Initial Catalog=FedChoiceBankDB;Integrated Security=True;");
+                optionsBuilder.UseSqlServer("Data Source=DESKTOP-LTBMIDR\\SQLEXPRESS;Initial Catalog=FedChoiceBankDB;Integrated Security=True;");
             }
         }
 
