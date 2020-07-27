@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Dell\\Source\\Repos\\Case-Study\\FedChoice Bank\\FedChoice Bank\\FedChoice Bank.csproj": {}
+    "C:\\Users\\Dell\\source\\repos\\Case-Study\\FedChoice Bank\\FedChoice Bank\\FedChoice Bank.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Dell\\Source\\Repos\\Case-Study\\FedChoice Bank\\FedChoice Bank\\FedChoice Bank.csproj": {
+    "C:\\Users\\Dell\\source\\repos\\Case-Study\\FedChoice Bank\\FedChoice Bank\\FedChoice Bank.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dell\\Source\\Repos\\Case-Study\\FedChoice Bank\\FedChoice Bank\\FedChoice Bank.csproj",
+        "projectUniqueName": "C:\\Users\\Dell\\source\\repos\\Case-Study\\FedChoice Bank\\FedChoice Bank\\FedChoice Bank.csproj",
         "projectName": "FedChoice Bank",
-        "projectPath": "C:\\Users\\Dell\\Source\\Repos\\Case-Study\\FedChoice Bank\\FedChoice Bank\\FedChoice Bank.csproj",
+        "projectPath": "C:\\Users\\Dell\\source\\repos\\Case-Study\\FedChoice Bank\\FedChoice Bank\\FedChoice Bank.csproj",
         "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Dell\\Source\\Repos\\Case-Study\\FedChoice Bank\\FedChoice Bank\\obj\\",
+        "outputPath": "C:\\Users\\Dell\\source\\repos\\Case-Study\\FedChoice Bank\\FedChoice Bank\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
