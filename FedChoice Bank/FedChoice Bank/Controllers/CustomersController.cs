@@ -22,10 +22,19 @@ namespace FedChoice_Bank.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Customer cust)
         {
-            cs.Add(cust);
-            cs.SaveChanges();
-            ViewBag.message = "The Record " + cust.CustomerName + "is Saved Successfully........";
-            return View(cust);
+            if (ModelState.IsValid == true)
+            {
+                cs.Add(cust);
+                cs.SaveChanges();       
+                ViewBag.message = "The Record " + cust.CustomerName + "is Saved Successfully........";
+                ModelState.Clear();
+                return View();
+            }
+            else
+            {
+                ViewBag.ErrorMessage = "Incorrect Details";
+                return View();
+            }  
         }
 
         public IActionResult LogOut()

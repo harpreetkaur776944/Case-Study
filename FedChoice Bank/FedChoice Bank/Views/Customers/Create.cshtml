@@ -2,58 +2,98 @@
 
 @{
     ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
 
-<h4>Customer</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="divCenter">
+       
+        <form asp-action="Create" name="CreateCustForm">
             <div class="form-group">
-                <label asp-for="CustomerSsn" class="control-label"></label>
-                <input asp-for="CustomerSsn" class="form-control" />
-                <span asp-validation-for="CustomerSsn" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CustomerName" class="control-label"></label>
-                <input asp-for="CustomerName" class="form-control" />
-                <span asp-validation-for="CustomerName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Age" class="control-label"></label>
-                <input asp-for="Age" class="form-control" />
-                <span asp-validation-for="Age" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
-                <input asp-for="Address" class="form-control" />
-                <span asp-validation-for="Address" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="State" class="control-label"></label>
-                <input asp-for="State" class="form-control" />
-                <span asp-validation-for="State" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="City" class="control-label"></label>
-                <input asp-for="City" class="form-control" />
-                <span asp-validation-for="City" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <table class="tableDesign">
+                    <tr>
+                        <td colspan="3"><h3  class="h3Design">Create New Customer</h3></td>
+
+                    </tr>
+                    <tr>
+                        <td class="tdDesign"><label asp-for="CustomerSsn" class="control-label"></label></td>
+                        <td class="tdDesign"><input asp-for="CustomerSsn" id="ssn" type="text" class="form-control" /></td>
+                        <td class="tdDesignValidate"><span asp-validation-for="CustomerSsn" class="text-danger" id="vssn"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="tdDesign"><label asp-for="CustomerName" class="control-label"></label></td>
+                        <td class="tdDesign"><input asp-for="CustomerName" id="name" type="text" class="form-control" /></td>
+                        <td class="tdDesignValidate"><span asp-validation-for="CustomerName" class="text-danger" id="vname"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="tdDesign"><label asp-for="Age" class="control-label"></label></td>
+                        <td class="tdDesign"><input asp-for="Age" id="age" type="text" class="form-control" /></td>
+                        <td class="tdDesignValidate"><span asp-validation-for="Age" class="text-danger" id="vage"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="tdDesign"><label asp-for="Address" class="control-label"></label></td>
+                        <td class="tdDesign"><textarea asp-for="Address" id="address" class="form-control" rows="2" cols="15"></textarea></td>
+                        <td class="tdDesignValidate"><span asp-validation-for="Address" class="text-danger" id="vaddress"></span></td>
+                    <tr>
+                        <td class="tdDesign"><label asp-for="State" class="control-label"></label></td>
+                        <td class="tdDesign">
+                            <select class="form-control" id="State" name="State">
+                                <option selected disabled>Select State</option>
+                                <option value="Punjab">Punjab</option>
+                            </select>
+                        </td>
+
+                        <td class="tdDesign"><span asp-validation-for="State" class="text-danger" id="vstate"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="tdDesign"><label asp-for="City" class="control-label"></label></td>
+                        <td class="tdDesign">
+                            <select class="form-control" id="City" name="City">
+                                <option selected disabled>Select City</option>
+                                <option value="Patiala">Patiala</option>
+                                <option value="Ludhiana">Ludhiana</option>
+                                <option value="Rajpura">Rajpura</option>
+                                <option value="Mohali">Mohali</option>
+                            </select>
+                        </td>
+
+                        <td class="tdDesignValidate"><span asp-validation-for="City" class="text-danger" id="vcity"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="tdButtonDesign" >
+                            <span class="form-group">
+                                <input type="submit" value="Submit" onsubmit="validateForm()" class="buttonDesign" />
+                            </span>
+                        </td>
+
+                        <td  class="tdButtonDesign" >
+                            <span class="form-group">
+                                <input type="reset" value="Reset"  class="buttonDesign" />
+                            </span>
+                        </td>
+                        <td ></td>
+                    </tr>
+                    <tr>
+                        <td class="tdDesign"><div asp-validation-summary="ModelOnly" class="text-danger"></div></td>
+                        <td class="tdDesign"><span class="text-danger">@ViewBag.message</span></td>
+                        <td class="tdDesign"></td>
+                    </tr>
+                </table>
             </div>
         </form>
-    </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-@Html.ActionLink("LogOut", "LogOut", "Home")
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            //
+            $("#reset").click(function () {
+                $(this).closest('form').find("input[type=text], textarea").val("");
+            });
+        });
+
+    </script>
 }

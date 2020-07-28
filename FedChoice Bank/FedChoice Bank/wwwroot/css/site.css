@@ -5,6 +5,8 @@
     --secLight: #ffc107;
 }
 
+
+/* For Layout Page of Customer Executive */
 body {
     margin-left: 0;
     margin-right: 0;
@@ -96,6 +98,66 @@ body {
 
 
 
+/*  Common to all  */
+.tableDesign {
+    height: 400px;
+    width: 700px;
+    padding: 20px;
+}
+
+.divCenter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left:45%;
+    margin-right:20%;
+    margin-top:2%;
+    margin-bottom:5%;}
+
+.tdDesign {
+    height: 20px;
+    width:100px;
+    text-align: left;
+    padding: 2px;
+}
+.tdDesignValidate {
+    height: 20px;
+    width: 300px;
+    text-align: left;
+    padding: 2px;
+}
+.tdButtonDesign {
+    height: 20px;
+    width: 100px;
+    text-align: center;
+    padding: 2px;
+}
+
+.labelStrong {
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    
+}
+.h3Design {
+    padding-top: 12px;
+    padding-left: 5%;
+    padding-bottom: 20px;
+    font-size: 40px;
+    color: var(--dark);
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+.buttonDesign{
+    background-color:var(--secLight);
+    color:var(--dark);
+    font-weight:bold;
+    margin:20px;
+    width:100px;
+    height:40px;
+    
+    text-align:center;
+}
+
+/*  For Login Table */
 .tableLogin {
     height: 250px;
     width: 300px;
@@ -127,4 +189,5 @@ body {
     margin: 100px;
     
 }
+
 

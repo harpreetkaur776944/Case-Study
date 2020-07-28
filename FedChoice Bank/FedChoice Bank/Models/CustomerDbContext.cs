@@ -21,7 +21,10 @@ namespace FedChoice_Bank.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-LTBMIDR\\SQLEXPRESS;Initial Catalog=FedChoiceBankDB;Integrated Security=True;");
+               // optionsBuilder.UseSqlServer("Data Source=DESKTOP-LTBMIDR\\SQLEXPRESS;Initial Catalog=FedChoiceBankDB;Integrated Security=True;");
+
+                optionsBuilder.UseSqlServer("Data Source=(local);Initial Catalog=FedChoiceBankDB;Integrated Security=True;");
+
             }
         }
 
