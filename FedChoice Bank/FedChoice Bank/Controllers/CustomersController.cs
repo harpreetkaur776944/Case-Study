@@ -22,19 +22,29 @@ namespace FedChoice_Bank.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Customer cust)
         {
+
             if (ModelState.IsValid == true)
             {
-                cs.Add(cust);
-                cs.SaveChanges();       
-                ViewBag.message = "The Record " + cust.CustomerName + "is Saved Successfully........";
-                ModelState.Clear();
-                return View();
+                var check = cs.Customer.Where(x => x.CustomerSsn == cust.CustomerSsn).FirstOrDefault();
+                if (check == null)
+                {
+                    cs.Add(cust);
+                    cs.SaveChanges();
+                    ViewBag.message = "The Record " + cust.CustomerName + "is Saved Successfully.";
+                    ModelState.Clear();
+                    return View();
+                }
+
+                else
+                {
+                    ViewBag.message = "Customer SSN ID already exists.";
+                    ModelState.Clear();
+                    return View();
+                }
             }
-            else
-            {
-                ViewBag.ErrorMessage = "Incorrect Details";
-                return View();
-            }  
+
+
+            return View();
         }
 
         public IActionResult LogOut()
@@ -42,5 +52,7 @@ namespace FedChoice_Bank.Controllers
             HttpContext.Session.Clear();
             return RedirectToAction("Login", "Login");
         }
+
+
     }
 }

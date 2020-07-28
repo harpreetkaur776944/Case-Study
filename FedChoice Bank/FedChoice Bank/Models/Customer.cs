@@ -8,13 +8,12 @@ namespace FedChoice_Bank.Models
     {
         [Display(Name = "Customer SSN ID")]
         [RegularExpression(@"^[0-9]*$",ErrorMessage ="Digits only")]
-        [MaxLength(9, ErrorMessage ="Must be 9 digits")]
+        [Range(100000000, 999999999, ErrorMessage = "Invalid SSN Number")]
         [Required]
         public int CustomerSsn { get; set; }
         public int CustomerId { get; set; }
 
         [Required]
-        [RegularExpression(@"^[A-Z]+[a-zA-Z]*$", ErrorMessage = "Alphabets only")]
         public string CustomerName { get; set; }
 
         [Required]

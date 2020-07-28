@@ -68,15 +68,15 @@
 
                         <td  class="tdButtonDesign" >
                             <span class="form-group">
-                                <input type="reset" value="Reset"  class="buttonDesign" />
+                                <input type="reset" value="reset" onclick="customReset()" class="buttonDesign" />
                             </span>
                         </td>
                         <td ></td>
                     </tr>
                     <tr>
-                        <td class="tdDesign"><div asp-validation-summary="ModelOnly" class="text-danger"></div></td>
-                        <td class="tdDesign"><span class="text-danger">@ViewBag.message</span></td>
-                        <td class="tdDesign"></td>
+                       
+                        <td colspan ="3" class="tdDesign"><span class="text-danger">@ViewBag.message</span></td>
+
                     </tr>
                 </table>
             </div>
@@ -94,6 +94,14 @@
                 $(this).closest('form').find("input[type=text], textarea").val("");
             });
         });
+
+        function customReset() {
+            document.getElementById("name").value = "";
+            document.getElementById("ssn").value = "";       
+            document.getElementById("age").value = "";
+            document.getElementById("address").value = "";
+            
+        }
 
     </script>
 }
