@@ -18,9 +18,8 @@ namespace FedChoice_Bank.Controllers
         public IActionResult Index()
         {
             var entities = new CustomerDbContext();
-
-            return View(entities.Customer.ToList());
-
+            return View();
+            //return View(entities.Customer.ToList());
         }
 
         public IActionResult Search()
@@ -33,11 +32,14 @@ namespace FedChoice_Bank.Controllers
             return View();
         }
 
+
+        /* Create new Customer */
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Customer cust)
         {
             CustomerDbContext cs = new CustomerDbContext();
+            StatusDbContext statusDbContext = new StatusDbContext();
 
             if (ModelState.IsValid == true)
             {
@@ -46,8 +48,19 @@ namespace FedChoice_Bank.Controllers
                 {
                     cs.Add(cust);
                     cs.SaveChanges();
-                    ViewBag.message = "The Record " + cust.CustomerName + " is Saved Successfully.";
+                    string message = "The Record " + cust.CustomerName + " is Saved Successfully.";
+                    ViewBag.message = message;
                     ModelState.Clear();
+
+                    /* For Customer Status */
+                    Status status = new Status();
+                    status.CustomerId = cust.CustomerId;
+                    status.CustomerSsnid = cust.CustomerSsn;
+                    status.Message = "Customer Account Created.";
+                    status.LastUpdated = DateTime.Now;
+                    statusDbContext.Add(status);
+                    statusDbContext.SaveChanges();
+
                     return View();
                 }
 
@@ -62,6 +75,8 @@ namespace FedChoice_Bank.Controllers
 
             return View();
         }
+
+  
 
         
         public IActionResult Details(int? Id)
@@ -124,32 +139,45 @@ namespace FedChoice_Bank.Controllers
         public IActionResult DeleteSearch()
         {
             return View();
-
-        }
-
-
-
-        public IActionResult Delete(int Id)
-        {
-            CustomerDbContext db = new CustomerDbContext();
-            var value = db.Customer.Where( m=> m.CustomerId == Id).FirstOrDefault();
-            if (value == null)
-            {
-                ViewBag.ErrorMessage = "Customer ID IS NOT PRESENT IN DATA, PLEASE FILL CORRECT DATA";
-                return View();
-            }
-            else
-            {   
-                db.Customer.Remove(db.Customer.Find(Id));
-                db.SaveChanges();
-                ViewBag.message = "The Record " + Id + "is Deleted Successfully.";
-                return View(value);
-
-            }
         }
 
 
         
+        public IActionResult Delete(int Id)
+        {
+            CustomerDbContext db = new CustomerDbContext();
+            StatusDbContext statusDbContext = new StatusDbContext();
+
+            var value = db.Customer.Where( m=> m.CustomerId == Id).FirstOrDefault();
+
+            if (value == null)
+            {
+                ViewBag.ErrorMessage = "Customer ID not Found.";
+                return View();
+            }
+            else
+            {
+                try
+                {
+                    db.Customer.Remove(db.Customer.Find(Id));
+                    db.SaveChanges();
+                    ViewBag.message = "The Customer " + Id + "is Deleted Successfully.";
+
+                    var customer = statusDbContext.Status.Where(m => m.CustomerId == Id).FirstOrDefault();
+                    customer.Message = "Customer is deleted.";
+                    customer.LastUpdated = DateTime.Now;
+                    statusDbContext.SaveChanges();
+
+                    return View(value);
+                }
+                catch(DbUpdateException ex)
+                {
+                    return Redirect("DeleteSerach");
+                }
+            }
+        }
+
+
         public IActionResult EditSearch()
         {
             return View();
@@ -166,13 +194,13 @@ namespace FedChoice_Bank.Controllers
 
             if (Id == null)
             {
-                ViewBag.ErrorMessage = "Customer SSN ID IS NOT PRESENT IN DATA, PLEASE FILL CORRECT DATA";
+                ViewBag.ErrorMessage = "Customer SSNID not Found.";
                 return View("EditSearch");
             }
 
             if (value == null)
             {
-                ViewBag.ErrorMessage = "Customer SSN ID IS NOT PRESENT IN DATA, PLEASE FILL CORRECT DATA";
+                ViewBag.ErrorMessage = "Customer SSNID not Found.";
                 return RedirectToAction("EditSearch");
             }
             else
@@ -187,10 +215,19 @@ namespace FedChoice_Bank.Controllers
         public IActionResult Edit(Customer customer)
         {
             CustomerDbContext db = new CustomerDbContext();
+            StatusDbContext statusDbContext = new StatusDbContext();
+
             db.Entry(customer).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             db.SaveChanges();
-            ViewBag.message = "The Record is Updated Successfully.";
-            return View("EditSearch");
+            ViewBag.message = "Customer is Updated Successfully.";
+
+            var cust = statusDbContext.Status.Where(m => m.CustomerId == customer.CustomerId).FirstOrDefault();
+            cust.Message = "Customer is updated.";
+            cust.LastUpdated = DateTime.Now;
+            statusDbContext.SaveChanges();
+
+            // return View("EditSearch");
+            return View();
         }
 
 

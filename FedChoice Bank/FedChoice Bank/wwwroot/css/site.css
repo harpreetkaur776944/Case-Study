@@ -104,6 +104,12 @@ body {
     width: 700px;
     padding: 20px;
 }
+.tableDesignShort {
+    height: 200px;
+    width: 700px;
+    padding: 20px;
+    margin-top: 50px;
+}
 
 .divCenter {
     display: flex;
@@ -115,11 +121,13 @@ body {
     margin-bottom:5%;}
 
 .tdDesign {
-    height: 20px;
+    height: 100px;
     width:100px;
+    
     text-align: left;
     padding: 2px;
 }
+
 .tdDesignValidate {
     height: 20px;
     width: 300px;

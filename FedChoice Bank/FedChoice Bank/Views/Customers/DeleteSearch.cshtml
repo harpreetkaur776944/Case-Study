@@ -1,30 +1,36 @@
-﻿
+﻿@model FedChoice_Bank.Models.Customer
 @{
     ViewData["Title"] = "DeleteSearch";
 }
 
-<h1>DeleteSearch</h1>
-<div>
-    <table align="center">
-        <tr>
-            <th><h3>Search</h3></th>
-        </tr>
-        <tr>
-            <td>
-                <div class="form-group">
-                    <form asp-controller="Customers" asp-action="Delete" method="get">
-                        <p align="center">
+    <div class="form-group">
+        <form asp-controller="Customers" asp-action="Delete" method="get">
+            <div class="form-group">
+                <table class="tableDesignShort" align="center">
+                    <tr>
+                        <td colspan="3" class="tdDesign"><h3 class="h3Design">Search</h3></td>
+                    </tr>
+                    <tr>
+                        <td ><label class="control-label">Enter CustomerID: </label></td>
+                        <td ><input name="Id" type="text" class="form-control" /></td>
+                        <td class="tdButtonDesign" colspan="2">
+                            <span class="form-group">
+                                <input type="submit" value="Delete" class="buttonDesign" />
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
 
-                            Enter Customer ID: <input type="text" name="Id" /><input type="submit" value="Delete" />
-                        </p>
-                    </form>
+                        
+                    </tr>
+                    <tr>
 
- 
-                </div>
-            </td>
-        </tr>
-        @ViewBag.ErrorMessage
-    </table>
-    <a asp-action="Index">Back to Customer Home</a>
-</div>
+                        <td colspan="3" class="tdDesignValidate"><span> @ViewBag.ErrorMessage</span></td>
+                    </tr>
+                </table>
+            </div>
+        </form>
+    </div>
+
+
 

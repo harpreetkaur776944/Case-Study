@@ -21,9 +21,9 @@ namespace FedChoice_Bank.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-LTBMIDR\\SQLEXPRESS;Initial Catalog=FedChoiceBankDB;Integrated Security=True;");
+               // optionsBuilder.UseSqlServer("Data Source=DESKTOP-LTBMIDR\\SQLEXPRESS;Initial Catalog=FedChoiceBankDB;Integrated Security=True;");
 
-               // optionsBuilder.UseSqlServer("Data Source=(local);Initial Catalog=FedChoiceBankDB;Integrated Security=True;");
+                optionsBuilder.UseSqlServer("Data Source=(local);Initial Catalog=FedChoiceBankDB;Integrated Security=True;");
 
             }
         }
@@ -46,6 +46,7 @@ namespace FedChoice_Bank.Models
                     .IsUnicode(false);
 
                 entity.Property(e => e.CustomerSsn).HasColumnName("CustomerSSN");
+
 
                 entity.Property(e => e.State)
                     .HasMaxLength(50)
