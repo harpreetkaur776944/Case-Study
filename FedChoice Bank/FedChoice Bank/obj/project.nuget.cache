@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4+jauWmhkNYmFYEXWSOPw4UCvANEINIffYbdpCckp9sAx0x5APBq+WzJYV/wbOH/23yb516WkxRZYpJE5O1S2Q==",
+  "dgSpecHash": "BLmqZuZa8uVuSqak5fO7NRkvu22mZJodNRrAcaf9X7YB7Jff5QiwX2CkEM8SGVNW+1dHM52PV24rfZqbskmfsg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Dell\\source\\repos\\Case Study\\FedChoice Bank\\FedChoice Bank\\FedChoice Bank.csproj",
+  "projectFilePath": "C:\\Users\\Dell\\source\\repos\\Case-Study\\FedChoice Bank\\FedChoice Bank\\FedChoice Bank.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Dell\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\Dell\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

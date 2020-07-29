@@ -31,7 +31,7 @@ namespace FedChoice_Bank.Controllers
                 else
                 {
                     HttpContext.Session.SetString("username", u.Login);
-                    return RedirectToAction("Index", "Customers");
+                    return RedirectToAction("Index", "Home");
                 }
             }
             return View();
