@@ -149,6 +149,50 @@ namespace FedChoice_Bank.Controllers
         }
 
 
+        
+        public IActionResult EditSearch()
+        {
+            return View();
+
+        }
+
+        [Route("edit")]
+        [HttpGet]
+        public IActionResult Edit(int ? Id)
+        {
+            CustomerDbContext cs = new CustomerDbContext();
+
+            var value = cs.Customer.Where(m => m.CustomerId == Id).FirstOrDefault();
+
+            if (Id == null)
+            {
+                ViewBag.ErrorMessage = "Customer SSN ID IS NOT PRESENT IN DATA, PLEASE FILL CORRECT DATA";
+                return View("EditSearch");
+            }
+
+            if (value == null)
+            {
+                ViewBag.ErrorMessage = "Customer SSN ID IS NOT PRESENT IN DATA, PLEASE FILL CORRECT DATA";
+                return RedirectToAction("EditSearch");
+            }
+            else
+            {
+                return View("Edit", value);
+            }
+            
+        }
+
+        [Route("edit")]
+        [HttpPost]
+        public IActionResult Edit(Customer customer)
+        {
+            CustomerDbContext db = new CustomerDbContext();
+            db.Entry(customer).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            db.SaveChanges();
+            ViewBag.message = "The Record is Updated Successfully.";
+            return View("EditSearch");
+        }
+
 
     }
 }
