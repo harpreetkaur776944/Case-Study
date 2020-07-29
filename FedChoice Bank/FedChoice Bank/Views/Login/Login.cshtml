@@ -1,7 +1,7 @@
 ﻿@model FedChoice_Bank.Models.Userstore;
 @{
     ViewData["Title"] = "Login";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    
 }
 
 <div class="divTableLogin">
@@ -9,7 +9,7 @@
         <div>
             @using (Html.BeginForm("Login","Login",FormMethod.Post))
             {
-                <table class="tableLogin">
+                <table class="tableLogin" align="center">
                     <tr>
                         <th class="thLogin"><h3>Login</h3></th>
                     </tr>

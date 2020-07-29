@@ -10,9 +10,9 @@
        
         <form asp-action="Create" name="CreateCustForm">
             <div class="form-group">
-                <table class="tableDesign">
+                <table class="tableDesign" align="center">
                     <tr>
-                        <td colspan="3"><h3  class="h3Design">Create New Customer</h3></td>
+                        <td colspan="3"><h3 class="h3Design">Create New Customer</h3></td>
 
                     </tr>
                     <tr>
@@ -60,25 +60,27 @@
                         <td class="tdDesignValidate"><span asp-validation-for="City" class="text-danger" id="vcity"></span></td>
                     </tr>
                     <tr>
-                        <td class="tdButtonDesign" >
+                        <td class="tdButtonDesign">
                             <span class="form-group">
                                 <input type="submit" value="Submit" onsubmit="validateForm()" class="buttonDesign" />
                             </span>
                         </td>
 
-                        <td  class="tdButtonDesign" >
+                        <td class="tdButtonDesign">
                             <span class="form-group">
                                 <input type="reset" value="reset" onclick="customReset()" class="buttonDesign" />
                             </span>
                         </td>
-                        <td ></td>
+                        <td></td>
                     </tr>
                     <tr>
-                       
-                        <td colspan ="3" class="tdDesign"><span class="text-danger">@ViewBag.message</span></td>
+
+                        <td colspan="3" class="tdDesign"><span class="text-danger">@ViewBag.message</span></td>
+
 
                     </tr>
                 </table>
+                <a asp-action="Index">Back to Customer Home</a>
             </div>
         </form>
 </div>

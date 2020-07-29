@@ -21,7 +21,7 @@
                         <a class="nav-link" asp-area="" asp-controller="" asp-action="">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="" asp-action="">Customer Managememt</a>
+                        <a  class="nav-link" asp-area="" asp-controller="Customers" asp-action="Index">Customer Managememt</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" asp-area="" asp-controller="" asp-action="">Account Managememt</a>
@@ -33,7 +33,7 @@
                         <a class="nav-link" href="">Account Operations</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Logout</a>
+                        <a  class="nav-link" asp-controller="Home" asp-action="LogOut" >Logout</a>
                     </li>
                 </ul>
             </nav>

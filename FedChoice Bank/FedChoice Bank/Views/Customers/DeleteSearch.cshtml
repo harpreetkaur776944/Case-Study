@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewData["Title"] = "DeleteSearch";
+}
+
+<h1>DeleteSearch</h1>
+<div>
+    <table align="center">
+        <tr>
+            <th><h3>Search</h3></th>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <form asp-controller="Customers" asp-action="Delete" method="get">
+                        <p align="center">
+
+                            Enter Customer ID: <input type="text" name="Id" /><input type="submit" value="Delete" />
+                        </p>
+                    </form>
+
+ 
+                </div>
+            </td>
+        </tr>
+        @ViewBag.ErrorMessage
+    </table>
+    <a asp-action="Index">Back to Customer Home</a>
+</div>
+
