@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - FedChoice Bank</title>
+    <link href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="`/css/login.css">
+    <link rel="stylesheet" href="~/css/site.css" />
+
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1 class="logoheading">FedChoice <span class="logoheading_two">Bank</span></h1>
+        </div>
+
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <div class="divBottom">
+        <hr class="hrBottom">
+        <table class="tableBottom footer">
+            <tr>
+                <td class="tdBottom">
+                    <div>
+                        <h4 class="h4Bottom">About Us</h4>
+                        <p class="pBottom">
+                            <table class="pBottom">
+                                <tr><td>FedChoice Bank was founded on 14th june 2016 with the objective of providing</td></tr>
+                                <tr><td>with the detail services based on retail Banking operations.The Retail Internet</td></tr>
+                                <tr><td>Banking of FedCoice Bank offers a plethora of products and services,to cater</td></tr>
+                                <tr><td>its customers by providing certain services with an easy offers</td></tr>
+                                <tr><td>and ways to do the required.</td></tr>
+                            </table>
+                        </p>
+                    </div>
+                </td>
+                <td class="tdBottom">
+                    <div>
+                        <h4 class="h4Bottom">Services</h4>
+                        <p class="pBottom">
+                            <table class="pBottom">
+                                <tr><td>Retail and Customer Banking</td></tr>
+                                <tr><td>Personal Internet Banking</td></tr>
+                                <tr><td>Corporate Internet Banking</td></tr>
+                                <tr><td>Debit and Credit Cards</td></tr>
+                            </table>
+                        </p>
+                    </div>
+                </td>
+                <td class="tdBottom">
+                    <div>
+                        <h4 class="h4Bottom">Contact Us</h4>
+                        <p class="pBottom">
+                            <table class="pBottom">
+                                <tr><td>Email:customer.service@gmail.com</td></tr>
+                                <tr><td>Contact No 02242406778</td></tr>
+                                <tr><td>Address:Corporate Office,Madore Cana Road</td></tr>
+                                <tr><td>Mumbai,Maharashtra,40002</td></tr>
+                            </table>
+                        </p>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <footer class="footer">
+
+            <strong>  <span class="spanBottom1">Copyright&copy; All rights reserved by </span><span class="spanBottom2">FedChoice Bank</span></strong>
+            <table class="footerTable">
+                <tr>
+                    <td><strong><span class="spanBottom2" style="{margin-left: 450px;}">Contact Us</span></strong></td>
+                    <td><img src="~/css/images/fb.jpg" class="imgBottom"></td>
+                    <td><img src="~/css/images/linkedIn.png" class="imgBottom"></td>
+                    <td><img src="~/css/images/twiiter.png" class="imgBottom"></td>
+                    <td><img src="~/css/images/googleplus.png" class="imgBottom"></td>
+                </tr>
+            </table>
+        </footer>
+    </div>
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
