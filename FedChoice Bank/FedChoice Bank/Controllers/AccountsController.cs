@@ -314,5 +314,20 @@ namespace FedChoice_Bank.Controllers
             return View();
         }
 
+        public IActionResult SearchForDeposit()
+        {
+            return View();
+        }
+
+        public IActionResult SearchForWithdraw()
+        {
+            return View();
+        }
+
+        public IActionResult SearchForTransfer()
+        {
+            return View();
+        }
+
     }
 }
