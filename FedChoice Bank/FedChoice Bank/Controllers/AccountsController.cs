@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using FedChoice_Bank.Models;
+using System.Data.Entity;
 
 namespace FedChoice_Bank.Controllers
 {
@@ -24,6 +25,64 @@ namespace FedChoice_Bank.Controllers
             return View();
         }
 
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Account account)
+        {
+            AccountDbContext cs = new AccountDbContext();
+            StatusDbContext statusDbContext = new StatusDbContext();
+
+            if (ModelState.IsValid == true)
+            { 
+
+                var getAccountId = cs.Account.OrderByDescending(m => m.AccountId).ToList().FirstOrDefault();
+                int temp = getAccountId.AccountId;
+
+                CustomerDbContext db = new CustomerDbContext();
+                var verify = db.Customer.Where(x => x.CustomerId == account.CustomerId).FirstOrDefault();
+
+                if (verify == null)
+                {
+                    ViewBag.ErrorMessage = "Customer ID Does not exists.";
+                    ModelState.Clear();
+                    return View();
+                }
+
+                var repeat = cs.Account.Where(x => x.CustomerId == account.CustomerId && x.AccountType == account.AccountType).FirstOrDefault();
+
+                if (repeat != null)
+                {
+                    ViewBag.ErrorMessage = "Customer already have this type of account.";
+                    ModelState.Clear();
+                    return View();
+                }
+
+                account.AccountId = ++temp;
+                account.Crdate = DateTime.Now.Date;
+                account.Duration = 5;
+                account.CrlastDate = DateTime.Now.AddYears(5).Date; 
+                cs.Add(account);
+                cs.SaveChanges();
+
+                ViewBag.message = "Account " + account.AccountId + " is Saved Successfully.";
+                var statusUpdate = statusDbContext.Status.Where(x => x.CustomerId == account.CustomerId).FirstOrDefault();
+                statusUpdate.AccountId = account.AccountId;
+                statusUpdate.AccountType = account.AccountType;
+                statusUpdate.Message = "Account is created";
+                statusUpdate.Status1 = "Active";
+                statusUpdate.LastUpdated = DateTime.Now;
+                statusDbContext.SaveChanges();
+                ModelState.Clear();
+                return View();
+            }
+
+
+            return View();
+        }
+
+
+        /*
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Account account)
@@ -78,7 +137,7 @@ namespace FedChoice_Bank.Controllers
 
             return View();
         }
-
+        */
 
         public IActionResult Details(int? Id)
         {
@@ -128,24 +187,17 @@ namespace FedChoice_Bank.Controllers
             }
         }
 
-
-
         public IActionResult LogOut()
         {
             HttpContext.Session.Clear();
             return RedirectToAction("Login", "Login");
         }
 
-
-
-
         public IActionResult DeleteSearch()
         {
             return View();
 
         }
-
-
 
         public IActionResult Delete(int Id, string type)
         {

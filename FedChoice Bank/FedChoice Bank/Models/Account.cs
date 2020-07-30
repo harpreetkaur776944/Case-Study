@@ -13,4 +13,5 @@ namespace FedChoice_Bank.Models
         public DateTime? CrlastDate { get; set; }
         public int? Duration { get; set; }
     }
+
 }
