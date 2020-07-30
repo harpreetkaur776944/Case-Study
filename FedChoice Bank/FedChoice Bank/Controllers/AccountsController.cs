@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using FedChoice_Bank.Models;
+
 using System.Data.Entity;
 
 namespace FedChoice_Bank.Controllers
@@ -255,6 +256,7 @@ namespace FedChoice_Bank.Controllers
         public IActionResult Deposit1(Account account, int id, int val)
         {
             AccountDbContext db = new AccountDbContext();
+            TransactionsDbContext ts = new TransactionsDbContext();
 
             db.Account.Find(id).Balance += val;
 
@@ -268,6 +270,16 @@ namespace FedChoice_Bank.Controllers
             temp.Message = "Amount Deposited";
             temp.LastUpdated = DateTime.Now;
             statusDbContext.SaveChanges();
+            Transactions trans = new Transactions();
+            trans.AccountId = id;
+            trans.Amount = val;
+            trans.AccountType = db.Account.Find(id).AccountType;
+            trans.TransactionDate = DateTime.Now;
+            trans.Description = "Deposit";
+            ts.Add(trans);
+            
+            ts.SaveChanges();
+
 
             return View("DepositAfter1", value);
 
@@ -303,6 +315,7 @@ namespace FedChoice_Bank.Controllers
         public IActionResult Withdraw1(Account account, int id, int val)
         {
             AccountDbContext db = new AccountDbContext();
+            TransactionsDbContext ts = new TransactionsDbContext();
 
             db.Account.Find(id).Balance -= val;
 
@@ -314,6 +327,15 @@ namespace FedChoice_Bank.Controllers
             temp.Message = "Amount Withdrawed";
             temp.LastUpdated = DateTime.Now;
             statusDbContext.SaveChanges();
+
+            Transactions trans = new Transactions();
+            trans.AccountId = id;
+            trans.Amount = val;
+            trans.AccountType = db.Account.Find(id).AccountType;
+            trans.TransactionDate = DateTime.Now;
+            trans.Description = "Withdraw";
+            ts.Add(trans);
+            ts.SaveChanges();
 
             return View("WithdrawAfter1", value);
 
@@ -351,6 +373,7 @@ namespace FedChoice_Bank.Controllers
             AccountDbContext db = new AccountDbContext();
 
             var find = db.Account.Where(m => m.AccountId == id2).FirstOrDefault();
+            TransactionsDbContext ts = new TransactionsDbContext();
 
             if (id2 == null)
             {
@@ -371,6 +394,19 @@ namespace FedChoice_Bank.Controllers
             db.SaveChanges();
             var value1 = db.Account.Find(id1);
             var value2 = db.Account.Find(id2);
+
+            Transactions trans = new Transactions();
+            trans.AccountId = id1;
+            trans.Amount = val;
+            trans.AccountType = db.Account.Find(id1).AccountType;
+            trans.TransactionDate = DateTime.Now;
+            trans.TargetAccountType = db.Account.Find(id2).AccountType;
+            trans.TargetAccountId = db.Account.Find(id2).AccountId;
+            trans.Description = "Transfer";
+
+            ts.Add(trans);
+            ts.SaveChanges();
+
 
             StatusDbContext statusDbContext = new StatusDbContext();
             var temp = statusDbContext.Status.Where(m => m.AccountId == id1).FirstOrDefault();
@@ -403,6 +439,91 @@ namespace FedChoice_Bank.Controllers
         public IActionResult SearchForTransfer()
         {
             return View();
+        }
+
+        public IActionResult TransactionStatus()
+        {
+            return View();
+        }
+
+        public IActionResult TransactionReport(int? Id, bool LastNumber, bool Date, int number)
+        {
+            TransactionsDbContext ts = new TransactionsDbContext();
+            var value = ts.Transactions.Where(m => m.AccountId == Id).FirstOrDefault();
+
+            if (Id == null)
+            {
+                ViewBag.ErrorMessage = "Account ID IS NOT PRESENT IN DATA, PLEASE FILL CORRECT DATA";
+                return View("TransactionStatus");
+            }
+
+            if (value == null)
+            {
+                ViewBag.ErrorMessage = "Account ID IS NOT PRESENT IN DATA, PLEASE FILL CORRECT DATA";
+                return View("TransactionsStatus");
+
+            }
+
+            if (Id != null)
+            {
+                if (LastNumber != true && Date == true)
+                {
+                    return RedirectToAction("ReportByDate");
+                }
+            }
+
+            if (Id != null)
+            {
+                if (LastNumber == true && number < 1)
+                {
+                    ViewBag.ErrorMessage = "Account Tranction is selected less than one: SELECT CORRECT INFO";
+
+                    return View("TransactionStatus");
+                }
+            }
+
+            List<Transactions> transactions = new List<Transactions>();
+
+            foreach (Transactions t in ts.Transactions)
+            {
+                if (t.AccountId == Id)
+                {
+                    transactions.Add(t);
+                }
+            }
+            return View(transactions.OrderBy(t => t.TransactionDate).TakeLast(number));
+        }
+
+        public IActionResult ReportByDate()
+        {
+            return View();
+        }
+
+        public IActionResult ReportByDate2(int? id, DateTime start, DateTime end)
+        {
+            TransactionsDbContext ts = new TransactionsDbContext();
+            var value = ts.Transactions.Where(m => m.AccountId == id).FirstOrDefault();
+            if (id == null)
+            {
+                ViewBag.ErrorMessage = "Account ID IS NOT PRESENT IN DATA, PLEASE FILL CORRECT DATA";
+                return View("ReportByDate");
+            }
+
+            if (value == null)
+            {
+                ViewBag.ErrorMessage = "Account ID IS NOT PRESENT IN DATA, PLEASE FILL CORRECT DATA";
+                return View("ReportByDate");
+            }
+
+            List<Transactions> transactions = new List<Transactions>();
+            foreach (Transactions t in ts.Transactions)
+            {
+                if (t.TransactionDate >= start && t.TransactionDate <= end)
+                {
+                    transactions.Add(t);
+                }
+            }
+            return View(transactions);
         }
 
     }

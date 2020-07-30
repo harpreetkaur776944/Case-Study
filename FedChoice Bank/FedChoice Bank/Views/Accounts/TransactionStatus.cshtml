@@ -1,0 +1,43 @@
+﻿@model IEnumerable<FedChoice_Bank.Models.Transactions>
+
+@{
+    ViewData["Title"] = "TransactionStatus";
+}
+
+<h1>TransactionStatus</h1>
+
+<h1>SearchAccountID</h1>
+<div class="form-group">
+    <form asp-controller="Accounts" asp-action="TransactionReport" method="get">
+        <table class="tableDesignVeryShort" align="center">
+            <tr>
+                <td colspan="2" class="tdDesign"><h3 class="h3Design">Search</h3></td>
+            </tr>
+            <tr>
+
+                <td><label class="control-label">Enter Account ID: </label></td>
+                <td><input name="Id" type="text" class="form-control" /></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <span class="form-group">
+                        <input type="radio" name="LastNumber" value="Last Number Of Transactions" />By Transactions
+
+
+                    </span>
+                </td>
+                <td>
+                    <input type="radio" name="Date" value="Date" /> By Date
+                </td>
+            </tr>
+            <tr>
+                <td><label class="control-label">Enter No. of transactions </label></td>
+                <td><input name="number" type="text" class="form-control" /></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Search" /></td>
+            </tr>
+        </table>
+    </form>
+</div>
+

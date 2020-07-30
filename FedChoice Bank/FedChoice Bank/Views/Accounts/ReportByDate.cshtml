@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "ReportByDate";
+}
+
+<h1>ReportByDate</h1>
+
+<h1>SearchAccountID</h1>
+<div class="form-group">
+    <form asp-controller="Accounts" asp-action="ReportByDate2" method="get">
+        <table class="tableDesignVeryShort" align="center">
+            <tr>
+                <td colspan="2" class="tdDesign"><h3 class="h3Design">Search</h3></td>
+            </tr>
+            <tr>
+
+                <td><label class="control-label">Enter Account ID: </label></td>
+                <td><input name="id" type="text" class="form-control" /></td>
+            </tr>
+            <tr>
+
+                <td><label class="control-label">Start date </label></td>
+                <td><input name="start" type="datetime" class="form-control" /></td>
+            </tr>
+            <tr>
+
+                <td><label class="control-label">End date </label></td>
+                <td><input name="end" type="datetime" class="form-control" /></td>
+            </tr>
+            <tr>
+                <td class="tdButtonDesign" colspan="2">
+                    <span class="form-group">
+                        <input type="submit" value="Display" class="buttonDesign" />
+                    </span>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
