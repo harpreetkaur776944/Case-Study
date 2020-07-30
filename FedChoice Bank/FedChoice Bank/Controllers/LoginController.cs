@@ -30,8 +30,24 @@ namespace FedChoice_Bank.Controllers
                 }
                 else
                 {
-                    HttpContext.Session.SetString("username", u.Login);
-                    return RedirectToAction("Index", "Customers");
+                    if (credentials.Role == "executive")
+                    {
+                        HttpContext.Session.SetString("username", u.Login);
+                        //ViewBag.ErrorMessage = "Executive";
+                        //return View();
+                        return RedirectToAction("Index", "Customers");
+                    }
+                    else if (credentials.Role == "cashier")
+                    {
+                        HttpContext.Session.SetString("username", u.Login);
+                        //ViewBag.ErrorMessage = " Cashier";
+                        //return View();
+                        return RedirectToAction("Index", "Customers");
+                    }
+                    else
+                    {
+                        return View();
+                    }
                 }
             }
             return View();

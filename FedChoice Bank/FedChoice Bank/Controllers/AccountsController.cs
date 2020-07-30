@@ -29,13 +29,11 @@ namespace FedChoice_Bank.Controllers
         public IActionResult Create(Account account)
         {
             AccountDbContext cs = new AccountDbContext();
+            StatusDbContext statusDbContext = new StatusDbContext();
 
             if (ModelState.IsValid == true)
             {
                 var check = cs.Account.Where(x => x.AccountId == account.AccountId).FirstOrDefault();
-                CustomerDbContext db = new CustomerDbContext();
-                var verify = db.Customer.Where(x => x.CustomerId == account.CustomerId).FirstOrDefault();
-                var repeat = cs.Account.Where(x => x.CustomerId == account.CustomerId && x.AccountType == account.AccountType).FirstOrDefault();
 
                 if (check != null)
                 {
@@ -43,6 +41,8 @@ namespace FedChoice_Bank.Controllers
                     ModelState.Clear();
                     return View();
                 }
+                CustomerDbContext db = new CustomerDbContext();
+                var verify = db.Customer.Where(x => x.CustomerId == account.CustomerId).FirstOrDefault();
 
                 if (verify == null)
                 {
@@ -51,6 +51,8 @@ namespace FedChoice_Bank.Controllers
                     return View();
                 }
 
+                var repeat = cs.Account.Where(x => x.CustomerId == account.CustomerId && x.AccountType == account.AccountType).FirstOrDefault();
+                
                 if (repeat != null)
                 {
                     ViewBag.ErrorMessage = "Customer already have this type of account.";
@@ -58,10 +60,17 @@ namespace FedChoice_Bank.Controllers
                     return View();
                 }
 
-
+               
                 cs.Add(account);
                 cs.SaveChanges();
-                ViewBag.message = "The Record " + account.AccountId + " is Saved Successfully.";
+                ViewBag.message = "Account " + account.AccountId + " is Saved Successfully.";
+                var statusUpdate = statusDbContext.Status.Where(x => x.CustomerId == account.CustomerId).FirstOrDefault();
+                statusUpdate.AccountId = account.AccountId;
+                statusUpdate.AccountType = account.AccountType;
+                statusUpdate.Message = "Account is created";
+                statusUpdate.Status1 = "Active";
+                statusUpdate.LastUpdated = DateTime.Now;
+                statusDbContext.SaveChanges();
                 ModelState.Clear();
                 return View();
             }
@@ -78,14 +87,14 @@ namespace FedChoice_Bank.Controllers
 
             if (Id == null)
             {
-                ViewBag.ErrorMessage = "Account ID IS NOT PRESENT IN DATA, PLEASE FILL CORRECT DATA";
+                ViewBag.ErrorMessage = "Account ID is not present";
                 return View();
             }
 
             var value = cs.Account.Where(m => m.AccountId == Id).FirstOrDefault();
             if (value == null)
             {
-                ViewBag.ErrorMessage = "Account ID IS NOT PRESENT IN DATA, PLEASE FILL CORRECT DATA";
+                ViewBag.ErrorMessage = "Account ID is not present";
                 return View();
             }
             else
@@ -102,17 +111,19 @@ namespace FedChoice_Bank.Controllers
 
             if (Id == null)
             {
-                ViewBag.ErrorMessage = "Customer ID IS NOT PRESENT IN DATA, PLEASE FILL CORRECT DATA";
+                ViewBag.ErrorMessage = "Customer ID not Found";
                 return View();
             }
 
             if (value == null)
             {
-                ViewBag.ErrorMessage = "Customer ID OR ACCOUNT TYPE IS NOT PRESENT IN DATA, PLEASE FILL CORRECT DATA";
+                ViewBag.ErrorMessage = "Customer ID Or AccountType not present ";
                 return View();
             }
             else
             {
+
+
                 return View(value);
             }
         }
@@ -139,10 +150,11 @@ namespace FedChoice_Bank.Controllers
         public IActionResult Delete(int Id, string type)
         {
             AccountDbContext db = new AccountDbContext();
+            StatusDbContext statusDbContext = new StatusDbContext();
             var value = db.Account.Where(m => m.AccountId == Id && m.AccountType == type).FirstOrDefault();
             if (value == null)
             {
-                ViewBag.ErrorMessage = "Account ID IS NOT PRESENT IN DATA OR THE ACCOUNT TYPE IS NOT CORRECT PLEASE FILL CORRECT DATA";
+                ViewBag.ErrorMessage = "Account ID not Found";
                 return View();
             }
             else
@@ -150,13 +162,23 @@ namespace FedChoice_Bank.Controllers
                 db.Account.Remove(value);
                 db.SaveChanges();
                 ViewBag.message = "The Record " + Id + "is Deleted Successfully.";
+
+                var statusUpdate = statusDbContext.Status.Where(m => m.AccountId==Id && m.AccountType == type).FirstOrDefault();
+                statusUpdate.Message = "Account is deleted.";
+                statusUpdate.Status1 = "Closed";
+                statusUpdate.LastUpdated = DateTime.Now;
+                statusDbContext.SaveChanges();
                 return View(value);
 
             }
         }
 
 
-
+        public IActionResult AccountStatus()
+        {
+            StatusDbContext statusDbContext = new StatusDbContext();
+            return View(statusDbContext.Status.ToList());
+        }
 
 
     }

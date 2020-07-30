@@ -56,8 +56,9 @@ namespace FedChoice_Bank.Controllers
                     Status status = new Status();
                     status.CustomerId = cust.CustomerId;
                     status.CustomerSsnid = cust.CustomerSsn;
-                    status.Message = "Customer Account Created.";
+                    status.Message = "Customer is Created.";
                     status.LastUpdated = DateTime.Now;
+                    status.Status1 = "Pending";
                     statusDbContext.Add(status);
                     statusDbContext.SaveChanges();
 
@@ -76,7 +77,11 @@ namespace FedChoice_Bank.Controllers
             return View();
         }
 
-  
+        public IActionResult CustomerStatus()
+        {
+            StatusDbContext statusDb = new StatusDbContext();
+            return View(statusDb.Status.ToList());
+        }
 
         
         public IActionResult Details(int? Id)
@@ -166,13 +171,14 @@ namespace FedChoice_Bank.Controllers
                     var customer = statusDbContext.Status.Where(m => m.CustomerId == Id).FirstOrDefault();
                     customer.Message = "Customer is deleted.";
                     customer.LastUpdated = DateTime.Now;
+                    customer.Status1 = "Closed";
                     statusDbContext.SaveChanges();
 
                     return View(value);
                 }
                 catch(DbUpdateException ex)
                 {
-                    return Redirect("DeleteSerach");
+                    return Redirect("DeleteSearch");
                 }
             }
         }

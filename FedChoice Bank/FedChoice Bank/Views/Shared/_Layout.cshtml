@@ -18,7 +18,7 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-warning navul">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="" asp-action="">Home</a>
+                        <a class="nav-link" asp-area="" asp-controller="Customers" asp-action="Index">Home</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle  " asp-area="" id="custManage" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -39,11 +39,18 @@
                         <div class="dropdown-menu" aria-labelledby="accManage">
                             <a class="dropdown-item" asp-controller="Accounts" asp-action="Create">Create Account</a>
 
-                            <a class="dropdown-item" asp-controller="Customers" asp-action="DeleteSearch">Delete Account</a>
+                            <a class="dropdown-item" asp-controller="Accounts" asp-action="DeleteSearch">Delete Account</a>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="" asp-action="">Status Details</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle  " asp-area="" id="statusManage" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Status Details
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="statusManage">
+                            <a class="dropdown-item" asp-controller="Customers" asp-action="CustomerStatus">Customer Status</a>
+                            <a class="dropdown-item" asp-controller="Accounts" asp-action="AccountStatus">Account Status</a>
+                        </div>
+
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle  " asp-area="" id="custManage" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

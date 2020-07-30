@@ -188,6 +188,13 @@ body {
     height: 40px;
     text-align: center;
 }
+.buttonDesign2 {
+    color: var(--secLight);
+    font-weight: bold;
+    width: 100px;
+    height: 40px;
+    text-align: center;
+}
 
 /*  For Login Table */
 .tableLogin {
@@ -201,6 +208,11 @@ body {
     color: var(--light);
     height: 20px;
     padding-left: 20px;
+}
+.thStatus {
+    background-color: var(--secLight);
+    color: var(--dark);
+    height: 20px;
 }
 
 .tdLogin {
@@ -219,4 +231,16 @@ body {
     align-items: center;
     justify-content: center;
     margin: 100px;
+}
+
+
+.trStatus{
+    background-color:var(--secLight);
+}
+
+.imgHome{
+    width:300px;
+    height:300px;
+    align-self:center;
+    margin-left:50px;
 }
