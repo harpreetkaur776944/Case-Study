@@ -1,31 +1,30 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "EditSearch";
 }
 
-<h1>EditSearch</h1>
-
-<div>
-    <table align="center">
-        <tr>
-            <th><h3>Search</h3></th>
-        </tr>
-        <tr>
-            <td>
-                <div class="form-group">
-                    <form asp-controller="Customers" asp-action="Edit" method="get">
-                        <p align="center">
-
-                            Enter Customer ID: <input type="text" name="Id" /><input type="submit" value="Edit" />
-                        </p>
-                    </form>
 
 
-                </div>
-            </td>
-        </tr>
-        @ViewBag.ErrorMessage
-        @ViewBag.message
-    </table>
-    <a asp-action="Index">Back to Customer Home</a>
+<div class="divCenter2">
+    <form asp-controller="Customers" asp-action="Edit" method="get">
+        <div class="form-group">
+            <table class="tableDesignShort" align="center">
+                <tr>
+                    <td colspan="3" class="tdDesign"><h3 class="h3Design">Edit Search</h3></td>
+                </tr>
+                <tr>
+                    <td><label class="control-label">Enter CustomerID: </label></td>
+                    <td><input name="Id" type="text" class="form-control" /></td>
+                    <td class="tdButtonDesign" colspan="2">
+                        <span class="form-group">
+                            <input type="submit" value="Edit" class="buttonDesign" />
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+
+                    <td colspan="3" class="tdDesignValidate"><span> @ViewBag.ErrorMessage</span></td>
+                </tr>
+            </table>
+        </div>
+    </form>
 </div>

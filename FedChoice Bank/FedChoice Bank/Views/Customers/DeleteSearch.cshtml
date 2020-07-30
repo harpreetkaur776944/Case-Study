@@ -3,34 +3,27 @@
     ViewData["Title"] = "DeleteSearch";
 }
 
-    <div class="form-group">
-        <form asp-controller="Customers" asp-action="Delete" method="get">
-            <div class="form-group">
-                <table class="tableDesignShort" align="center">
-                    <tr>
-                        <td colspan="3" class="tdDesign"><h3 class="h3Design">Search</h3></td>
-                    </tr>
-                    <tr>
-                        <td ><label class="control-label">Enter CustomerID: </label></td>
-                        <td ><input name="Id" type="text" class="form-control" /></td>
-                        <td class="tdButtonDesign" colspan="2">
-                            <span class="form-group">
-                                <input type="submit" value="Delete" class="buttonDesign" />
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
+<div class="divCenter2">
+    <form asp-controller="Customers" asp-action="Delete" method="get">
+        <div class="form-group">
+            <table class="tableDesignShort" align="center">
+                <tr>
+                    <td colspan="3" class="tdDesign"><h3 class="h3Design">Delete Search</h3></td>
+                </tr>
+                <tr>
+                    <td><label class="control-label">Enter CustomerID: </label></td>
+                    <td><input name="Id" type="text" class="form-control" /></td>
+                    <td class="tdButtonDesign" colspan="2">
+                        <span class="form-group">
+                            <input type="submit" value="Delete" class="buttonDesign" />
+                        </span>
+                    </td>
+                </tr>
+                <tr>
 
-                        
-                    </tr>
-                    <tr>
-
-                        <td colspan="3" class="tdDesignValidate"><span> @ViewBag.ErrorMessage</span></td>
-                    </tr>
-                </table>
-            </div>
-        </form>
-    </div>
-
-
-
+                    <td colspan="3" class="tdDesignValidate"><span> @ViewBag.ErrorMessage</span></td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</div>

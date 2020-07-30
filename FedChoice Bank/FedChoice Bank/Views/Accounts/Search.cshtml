@@ -3,46 +3,60 @@
     ViewData["Title"] = "Search";
 }
 
-<h1>Search</h1>
-<div>
-    <table align="center">
-        <tr>
-            <th><h3>Search</h3></th>
-        </tr>
+
+
+<div class="divCenter2">
+    <table class="tableDesign">
         <tr>
             <td>
                 <div class="form-group">
                     <form asp-controller="Accounts" asp-action="Details" method="get">
-                        <p align="center">
+                        <table class="tableDesignVeryShort" align="center">
+                            <tr>
+                                <td colspan="2" class="tdDesign"><h3 class="h3Design">Search</h3></td>
+                            </tr>
+                            <tr>
 
-                            Enter Customer Account ID: <input type="text" name="Id" /><input type="submit" value="Search" />
-                        </p>
+                                <td><label class="control-label">Enter Account ID: </label></td>
+                                <td><input name="Id" type="text" class="form-control" /></td>
+                            </tr>
+                        </table>
                     </form>
-
-                    OR
-
-                    <form asp-controller="Accounts" asp-action="DetailsCustomerId" method="get">
-                        <p align="center">
-                            Enter Customer ID: <input type="text" name="Id" />
-
-                        </p>
-
-                        <p align="center">
-                            Enter Account Type: <input type="text" name="type" />
-
-                        <p>
-
-                            <input type="submit" value="Search" />
-
-                    </form>
-
                 </div>
             </td>
         </tr>
-        @ViewBag.message|
-        @ViewBag.ErrorMessage|
+        <tr>
+            <td align="center"><strong>OR</strong></td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <form asp-controller="Accounts" asp-action="DetailsCustomerId" method="get">
+                        <table class="tableDesignVeryShort" align="center">
+                            <tr>
+
+                                <td><label class="control-label">Enter Customer ID:  </label></td>
+                                <td><input name="Id" type="text" class="form-control" /></td>
+
+                            </tr>
+                            <tr>
+                                <td><label class="control-label">Enter Account Type:  </label></td>
+                                <td><input name="Id" type="text" class="form-control" /></td>
+                            </tr>
+                            <tr>
+                                <td class="tdButtonDesign" colspan="2">
+                                    <span class="form-group">
+                                        <input type="submit" value="Search" class="buttonDesign" />
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="tdDesignValidate"><span> @ViewBag.ErrorMessage</span></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </td>
+        </tr>
     </table>
-
-    <a asp-action="Index">Back to Account Home</a>
 </div>
-

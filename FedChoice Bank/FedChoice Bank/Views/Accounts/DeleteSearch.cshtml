@@ -3,39 +3,49 @@
     ViewData["Title"] = "DeleteSearch";
 }
 
-<h1>DeleteSearch</h1>
-<div>
-    <table align="center">
-        <tr>
-            <th><h3>Search</h3></th>
-        </tr>
-        <tr>
-            <td>
-                <div class="form-group">
 
-                    <form asp-controller="Accounts" asp-action="Delete" method="get">
-                        <p align="center">
-                            Enter Account ID: <input type="text" name="Id" />
 
-                        </p>
 
-                        <p align="center">
-                            Enter Account Type: <input type="text" name="type" />
+<div class="divCenter2">
+    <form asp-controller="Accounts" asp-action="Delete" method="get">
+        <table class="tableDesign">
+            <tr>
+                <td>
+                    <div class="form-group">
 
-                        <p>
+                        <table class="tableDesignVeryShort" align="center">
+                            <tr>
+                                <td colspan="2" class="tdDesign"><h3 class="h3Design">Delete Account Search</h3></td>
+                            </tr>
+                            <tr>
 
-                            <input type="submit" value="Search" />
+                                <td><label class="control-label">Enter AccountID: </label></td>
+                                <td><input name="Id" type="text" class="form-control" /></td>
 
-                    </form>
+                            </tr>
+                            <tr>
 
-                </div>
-            </td>
-        </tr>
-        @ViewBag.message|
-        @ViewBag.ErrorMessage|
-    </table>
+                                <td><label class="control-label">Enter AccountType: </label></td>
+                                <td><input name="Id" type="text" class="form-control" /></td>
 
-    <a asp-action="Index">Back to Account Home</a>
+                            </tr>
+                            <tr>
+
+                                <td class="tdButtonDesign" colspan="2">
+                                    <span class="form-group">
+                                        <input type="submit" value="Search" class="buttonDesign" />
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tdDesignValidate"><span> @ViewBag.message</span></td>
+                                <td class="tdDesignValidate"><span> @ViewBag.ErrorMessage</span></td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </form>
 </div>
-
-

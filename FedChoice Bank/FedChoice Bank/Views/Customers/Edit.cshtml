@@ -4,123 +4,98 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
 
-<h4>Customer</h4>
-<hr />
- 
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <dl class="row">
-                <dt>
-                    CustomerId
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.CustomerId)
-                </dd>
-            </dl>
-            <div class="form-group">
-                <label asp-for="CustomerId" class="control-label"></label>
-                <input asp-for="CustomerId" class="form-control" />
-                <span asp-validation-for="CustomerId" class="text-danger"></span>
-            </div>
-            <dl class="row">
-                <dt>
-                    @Html.DisplayNameFor(model => model.CustomerSsn)
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.CustomerSsn)
-                </dd>
-            </dl>
-            <div class="form-group">
-                <label asp-for="CustomerSsn" class="control-label"></label>
-                <input asp-for="CustomerSsn" class="form-control" />
-                <span asp-validation-for="CustomerSsn" class="text-danger"></span>
-            </div>
-            <dl class="row">
-                <dt>
-                    Old Customer Name
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.CustomerName)
-                </dd>
 
-            </dl>
-
-            <div class="form-group">
-                <label asp-for="CustomerName" class="control-label"></label>
-                <input asp-for="CustomerName" class="form-control" />
-                <span asp-validation-for="CustomerName" class="text-danger"></span>
-            </div>
-
-            <dl class="row">
-                <dt>
-                    Old Age
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.Age)
-                </dd>
-
-            </dl>
-            <div class="form-group">
-                <label asp-for="Age" class="control-label"></label>
-                <input asp-for="Age" class="form-control" />
-                <span asp-validation-for="Age" class="text-danger"></span>
-            </div>
-            <dl class="row">
-                <dt>
-                    Old Address
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.Address)
-                </dd>
-
-            </dl>
-            <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
-                <input asp-for="Address" class="form-control" />
-                <span asp-validation-for="Address" class="text-danger"></span>
-            </div>
-            <dl class="row">
-                <dt>
-                    Old State
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.State)
-                </dd>
-
-            </dl>
-            <div class="form-group">
-                <label asp-for="State" class="control-label"></label>
-                <input asp-for="State" class="form-control" />
-                <span asp-validation-for="State" class="text-danger"></span>
-            </div>
-            <dl class="row">
-                <dt>
-                    Old City
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.City)
-                </dd>
-            </dl>
-
-            <div class="form-group">
-                <label asp-for="City" class="control-label"></label>
-                <input asp-for="City" class="form-control" />
-                <span asp-validation-for="City" class="text-danger"></span>
-            </div>
-            <div class="form-group" method="get">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
+<div class="divCenter">
+    <form asp-action="edit">
+        <div class="form-group">
+            <table class="tableDesign" align="center">
+                <tr>
+                    <td colspan="3"><h3 class="h3Design">Edit Customer</h3></td>
+                </tr>
+                <tr>
+                    <td class="tdDesign"><strong>Old Customer ID:</strong></td>
+                    <td class="tdDesign">@Html.DisplayFor(model => model.CustomerId)</td>
+                    <td class="tdDesign"></td>
+                </tr>
+                <tr>
+                    <td class="tdDesign"><label asp-for="CustomerId" class="control-label"></label></td>
+                    <td class="tdDesign"><input asp-for="CustomerId" class="form-control" /></td>
+                    <td class="tdDesignValidate"><span asp-validation-for="CustomerId" class="text-danger"></span></td>
+                </tr>
+                <tr>
+                    <td><strong>Old Customer SSNID:</strong></td>
+                    <td>@Html.DisplayFor(model => model.CustomerSsn)</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="tdDesign"><label asp-for="CustomerSsn" class="control-label"></label></td>
+                    <td class="tdDesign"><input asp-for="CustomerSsn" type="text" class="form-control" /></td>
+                    <td class="tdDesignValidate"><span asp-validation-for="CustomerSsn" class="text-danger"></span></td>
+                </tr>
+                <tr>
+                    <td><strong>Old Customer Name:</strong></td>
+                    <td>@Html.DisplayFor(model => model.CustomerName)</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="tdDesign"><label asp-for="CustomerName" class="control-label"></label></td>
+                    <td class="tdDesign"><input asp-for="CustomerName" type="text" class="form-control" /></td>
+                    <td class="tdDesignValidate"><span asp-validation-for="CustomerName" class="text-danger"></span></td>
+                </tr>
+                <tr>
+                    <td><strong>Old Age:</strong></td>
+                    <td>@Html.DisplayFor(model => model.Age)</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="tdDesign"><label asp-for="Age" class="control-label"></label></td>
+                    <td class="tdDesign2"><input asp-for="Age" type="text" class="form-control" /></td>
+                    <td class="tdDesignValidate"><span asp-validation-for="Age" class="text-danger"></span></td>
+                </tr>
+                <tr>
+                    <td><strong>Old Address:</strong></td>
+                    <td>@Html.DisplayFor(model => model.Address)</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="tdDesign"><label asp-for="Address" class="control-label"></label></td>
+                    <td class="tdDesign"><textarea asp-for="Address" id="address" class="form-control" rows="2" cols="15"></textarea></td>
+                    <td class="tdDesignValidate"><span asp-validation-for="Address" class="text-danger"></span></td>
+                </tr>
+                <tr>
+                    <td><strong>Old State:</strong></td>
+                    <td>@Html.DisplayFor(model => model.State)</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="tdDesign"><label asp-for="State" class="control-label"></label></td>
+                    <td class="tdDesign"><input asp-for="State" type="text" class="form-control" /></td>
+                    <td class="tdDesignValidate"><span asp-validation-for="State" class="text-danger"></span></td>
+                </tr>
+                <tr>
+                    <td><strong>Old City:</strong></td>
+                    <td>@Html.DisplayFor(model => model.City)</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="tdDesign"><label asp-for="City" class="control-label"></label></td>
+                    <td class="tdDesign"><input asp-for="City" type="text" class="form-control" /></td>
+                    <td class="tdDesignValidate"><span asp-validation-for="City" class="text-danger"></span></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td class="tdButtonDesign" align="left">
+                        <span class="form-group" method="get">
+                            <input type="submit" value="Save" class="buttonDesign" />
+                        </span>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="tdDesign" colspan="3"> <a asp-action="EditSearch">Cancel</a></td>
+                </tr>
+            </table>
+        </div>
+    </form>
 </div>
-
-<div>
-
-    <a asp-action="EditSearch">Cancel</a>|
-    <a asp-action="Index">Back to List</a>
-</div>
-

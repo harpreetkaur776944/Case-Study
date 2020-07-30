@@ -3,61 +3,47 @@
     ViewData["Title"] = "Delete";
 }
 
-<h1>Delete</h1>
-
-<div>
-    <h4>Account</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CustomerId)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CustomerId)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.AccountId)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.AccountId)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.AccountType)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.AccountType)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Balance)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Balance)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Crdate)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Crdate)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CrlastDate)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CrlastDate)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Duration)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Duration)
-        </dd>
-    </dl>
-    @ViewBag.message         |
-    @ViewBag.ErrorMessage    |
-    <form asp-action="Delete">
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="DeleteSearch">Back to Delete Search</a>|
-        <a asp-action="Index">Back to List</a>
-
-    </form>
+<div class="divCenter">
+    <table class="tableDesign" align="center">
+        <tr>
+            <td colspan="2"><h3 class="h3Design">Delete Account</h3></td>
+        </tr>
+        <tr>
+            <td class="tdDesign">@Html.DisplayNameFor(model => model.CustomerId)</td>
+            <td class="tdDesign">@Html.DisplayFor(model => model.CustomerId)</td>
+        </tr>
+        <tr>
+            <td class="tdDesign">@Html.DisplayNameFor(model => model.AccountId)</td>
+            <td class="tdDesign">@Html.DisplayFor(model => model.AccountId)</td>
+        </tr>
+        <tr>
+            <td class="tdDesign">@Html.DisplayNameFor(model => model.AccountType)</td>
+            <td class="tdDesign">@Html.DisplayFor(model => model.AccountType)</td>
+        </tr>
+        <tr>
+            <td class="tdDesign">@Html.DisplayNameFor(model => model.Balance)</td>
+            <td class="tdDesign">@Html.DisplayFor(model => model.Balance)</td>
+        </tr>
+        <tr>
+            <td class="tdDesign">@Html.DisplayNameFor(model => model.Crdate)</td>
+            <td class="tdDesign">@Html.DisplayFor(model => model.Crdate)</td>
+        </tr>
+        <tr>
+            <td class="tdDesign"> @Html.DisplayNameFor(model => model.CrlastDate)</td>
+            <td class="tdDesign">@Html.DisplayFor(model => model.CrlastDate)</td>
+        </tr>
+        <tr>
+            <td class="tdDesign"> @Html.DisplayNameFor(model => model.Duration)</td>
+            <td class="tdDesign">@Html.DisplayFor(model => model.Duration)</td>
+        </tr>
+        <tr>
+            <td class="tdDesign text-danger">
+                @ViewBag.message
+            </td>
+            <td class="tdDesign text-danger">
+                @ViewBag.ErrorMessage
+            </td>
+        </tr>
+    </table>
 </div>
+

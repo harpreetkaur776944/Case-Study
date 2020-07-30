@@ -4,58 +4,89 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
 
-<h4>Account</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="CustomerId" class="control-label"></label>
-                <input asp-for="CustomerId" class="form-control" />
-                <span asp-validation-for="CustomerId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AccountId" class="control-label"></label>
-                <input asp-for="AccountId" class="form-control" />
-                <span asp-validation-for="AccountId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AccountType" class="control-label"></label>
-                <input asp-for="AccountType" class="form-control" />
-                <span asp-validation-for="AccountType" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Balance" class="control-label"></label>
-                <input asp-for="Balance" class="form-control" />
-                <span asp-validation-for="Balance" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Crdate" class="control-label"></label>
-                <input asp-for="Crdate" class="form-control" />
-                <span asp-validation-for="Crdate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CrlastDate" class="control-label"></label>
-                <input asp-for="CrlastDate" class="form-control" />
-                <span asp-validation-for="CrlastDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Duration" class="control-label"></label>
-                <input asp-for="Duration" class="form-control" />
-                <span asp-validation-for="Duration" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
+
+<div class="divCenter">
+
+    <form asp-action="Create">
+        <div class="form-group">
+            <table class="tableDesign" align="center">
+                <tr>
+                    <td colspan="3"><h3 class="h3Design">Create New Account</h3></td>
+
+                </tr>
+                <tr>
+                    <td class="tdDesign"><label asp-for="CustomerId" class="control-label"></label></td>
+                    <td class="tdDesign"><input asp-for="CustomerId" type="text" class="form-control" /></td>
+                    <td class="tdDesignValidate"><span asp-validation-for="CustomerId" class="text-danger"></span></td>
+                </tr>
+                <tr>
+                    <td class="tdDesign"><label asp-for="AccountId" class="control-label"></label></td>
+                    <td class="tdDesign"><input asp-for="AccountId" type="text" class="form-control" /></td>
+                    <td class="tdDesignValidate"><span asp-validation-for="AccountId" class="text-danger"></span></td>
+                </tr>
+                <tr>
+                    <td class="tdDesign"><label asp-for="AccountType" class="control-label"></label></td>
+                    <td class="tdDesign"><input asp-for="AccountType" type="text" class="form-control" /></td>
+                    <td class="tdDesignValidate"><span asp-validation-for="AccountType" class="text-danger"></span></td>
+                </tr>
+                <tr>
+                    <td class="tdDesign"><label asp-for="Balance" class="control-label"></label></td>
+                    <td class="tdDesign"><input asp-for="Balance" type="text" class="form-control" /></td>
+                    <td class="tdDesignValidate"><span asp-validation-for="Balance" class="text-danger"></span></td>
+                </tr>
+                <tr>
+                    <td class="tdDesign"><label asp-for="Crdate" class="control-label"></label></td>
+                    <td class="tdDesign"><input asp-for="Crdate" type="text" class="form-control" /></td>
+                    <td class="tdDesignValidate"><span asp-validation-for="Crdate" class="text-danger"></span></td>
+                </tr>
+                <tr>
+                    <td class="tdDesign"><label asp-for="CrlastDate" class="control-label"></label></td>
+                    <td class="tdDesign"><input asp-for="CrlastDate" type="text" class="form-control" /></td>
+                    <td class="tdDesignValidate"><span asp-validation-for="CrlastDate" class="text-danger"></span></td>
+                </tr>
+                <tr>
+                    <td class="tdDesign"><label asp-for="Duration" class="control-label"></label></td>
+                    <td class="tdDesign"><input asp-for="AccountId" type="text" class="form-control" /></td>
+                    <td class="tdDesignValidate"><span asp-validation-for="Duration" class="text-danger"></span></td>
+                </tr>
+                <tr>
+                    <td class="tdButtonDesign">
+                        <span class="form-group">
+                            <input type="submit" value="Submit" onsubmit="validateForm()" class="buttonDesign" />
+                        </span>
+                    </td>
+
+                    <td class="tdButtonDesign">
+                        <span class="form-group">
+                            <input type="reset" value="Reset" class="buttonDesign" />
+                        </span>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+
+                    <td colspan="3" class="tdDesign"><span class="text-danger">@ViewBag.message</span></td>
+
+
+                </tr>
+            </table>
+
+        </div>
+    </form>
 </div>
-@ViewBag.message      |
-@ViewBag.ErrorMessage |
-<div>
-    <a asp-action="Index">Back to Account Home</a>
-</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            //
+            $("#reset").click(function () {
+                $(this).closest('form').find("input[type=text], textarea").val("");
+            });
+        });
+
+    </script>
+}
+
 
