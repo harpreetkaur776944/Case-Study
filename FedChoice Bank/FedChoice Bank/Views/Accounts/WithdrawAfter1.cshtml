@@ -1,44 +1,47 @@
 ﻿@model FedChoice_Bank.Models.Account
 @{
     ViewData["Title"] = "WithdrawAfter1";
+    Layout = "~/Views/Shared/_Layouttwo.cshtml";
 }
 
-<h1>WithdrawAfter1</h1>
-<div>
-    <h4>Account</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CustomerId)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CustomerId)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.AccountId)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.AccountId)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.AccountType)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.AccountType)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Balance)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Balance)
-        </dd>
-    </dl>
+    <div class="divCenter">
+        <table class="tableDesign" align="center">
+            <tr>
+                <td colspan="2"><h3 class="h3Design">After Withdraw</h3></td>
+            </tr>
+            <tr>
+                <td class="tdDesign">@Html.DisplayNameFor(model => model.CustomerId)</td>
+                <td class="tdDesign">@Html.DisplayFor(model => model.CustomerId)</td>
+            </tr>
+            <tr>
+                <td class="tdDesign">@Html.DisplayNameFor(model => model.AccountId)</td>
+                <td class="tdDesign">@Html.DisplayFor(model => model.AccountId)</td>
+            </tr>
+            <tr>
+                <td class="tdDesign">@Html.DisplayNameFor(model => model.AccountType)</td>
+                <td class="tdDesign">@Html.DisplayFor(model => model.AccountType)</td>
+            </tr>
+            <tr>
+                <td class="tdDesign">@Html.DisplayNameFor(model => model.Balance)</td>
+                <td class="tdDesign">@Html.DisplayFor(model => model.Balance)</td>
+            </tr>
 
 
-</div>
-@ViewBag.message|
-@ViewBag.ErrorMessage|
+            <tr>
+                <td class="tdDesign text-danger">
+                    @ViewBag.message
+                </td>
+                <td class="tdDesign text-danger">
+                    @ViewBag.ErrorMessage
+                </td>
+            </tr>
 
-<a asp-action="Search">Back to Search</a>|
-<a asp-action="Index">Back to List</a>|
 
+
+            <tr>
+                <td><a asp-action="SearchForWithdraw">Back to Search</a></td>
+                <td><a asp-action="Index">Back to Home</a></td>
+            </tr>
+        </table>
+
+    </div>

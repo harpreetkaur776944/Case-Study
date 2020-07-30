@@ -1,68 +1,58 @@
 ﻿@model FedChoice_Bank.Models.Account
 @{
     ViewData["Title"] = "Deposit";
+    Layout = "~/Views/Shared/_Layouttwo.cshtml";
 }
 
-<h1>Deposit</h1>
-<div>
-    <table align="center">
-        <tr>
-            <th><h3>Search</h3></th>
-        </tr>
-        <tr>
-            <td>
-                <div class="form-group">
-                    <form asp-controller="Accounts" asp-action="Deposit1" method="get">
-                        <dl class="row">
-                            <dt class="col-sm-2">
-                                @Html.DisplayNameFor(model => model.CustomerId)
-                            </dt>
-                            <dd class="col-sm-10">
-                                @Html.DisplayFor(model => model.CustomerId)
 
-                            </dd>
-                            <dt class="col-sm-2">
-                                @Html.DisplayNameFor(model => model.AccountId)
-                            </dt>
-                            <dd class="col-sm-10">
-                                @Html.DisplayFor(model => model.AccountId)
+<div class="divCenter">
+    <form asp-controller="Accounts" asp-action="Deposit1" method="get">
+        <table class="tableDesign" align="center">
 
-                            </dd>
-                            <dt class="col-sm-2">
-                                @Html.DisplayNameFor(model => model.AccountType)
-                            </dt>
-                            <dd class="col-sm-10">
-                                @Html.DisplayFor(model => model.AccountType)
-                            </dd>
-                            <dt class="col-sm-2">
-                                @Html.DisplayNameFor(model => model.Balance)
-                            </dt>
-                            <dd class="col-sm-10">
-                                @Html.DisplayFor(model => model.Balance)
-                            </dd>
-                        </dl>
+            <tr>
+                <td colspan="2"><h3 class="h3Design">Deposit Amount</h3></td>
+            </tr>
+            <tr>
+                <td class="tdDesign">@Html.DisplayNameFor(model => model.CustomerId)</td>
+                <td class="tdDesign">@Html.DisplayFor(model => model.CustomerId)</td>
+            </tr>
+            <tr>
+                <td class="tdDesign">@Html.DisplayNameFor(model => model.AccountId)</td>
+                <td class="tdDesign">@Html.DisplayFor(model => model.AccountId)</td>
+            </tr>
+            <tr>
+                <td class="tdDesign">@Html.DisplayNameFor(model => model.AccountType)</td>
+                <td class="tdDesign">@Html.DisplayFor(model => model.AccountType)</td>
+            </tr>
+            <tr>
+                <td class="tdDesign">@Html.DisplayNameFor(model => model.Balance)</td>
+                <td class="tdDesign">@Html.DisplayFor(model => model.Balance)</td>
+            </tr>
+            <tr>
+                <td class="tdDesign"><label class="form-label"> Deposit Confirm Account id : </label></td>
+                <td class="tdDesign"><input type="text" name="id" /></td>
+            </tr>
+            <tr>
+                <td class="tdDesign"><label class="form-label"> Deposit amount :  </label></td>
+                <td class="tdDesign"><input type="text" name="val" /></td>
+            </tr>
+            <tr>
+                <td class="tdButtonDesign" colspan="2"><input type="submit" value="Deposit" class="buttonDesign"/> </td>
+            </tr>
 
 
-
-
-                        <p>
-                            Deposit Confirm Account id : <input type="text" name="id" />
-                            Deposit amount : <input type="text" name="val" />
-
-                            <input type="submit" value="Deposit" />
-
-                    </form>
-
-                </div>
-            </td>
-        </tr>
-        @ViewBag.message|
-        @ViewBag.ErrorMessage|
-    </table>
-
-    <a asp-action="Index">Back to Account Home</a>
+            <tr>
+                <td class="tdDesign text-danger">
+                    @ViewBag.message
+                </td>
+                <td class="tdDesign text-danger">
+                    @ViewBag.ErrorMessage
+                </td>
+            </tr>
+        </table>
+        <a asp-action="Index">Back to Account Home</a>
+    </form>
+    
 </div>
-
-
 
 

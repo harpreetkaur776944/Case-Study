@@ -42,7 +42,7 @@ namespace FedChoice_Bank.Controllers
                         HttpContext.Session.SetString("username", u.Login);
                         //ViewBag.ErrorMessage = " Cashier";
                         //return View();
-                        return RedirectToAction("Index", "Customers");
+                        return RedirectToAction("Index", "Accounts");
                     }
                     else
                     {

@@ -188,14 +188,14 @@ namespace FedChoice_Bank.Controllers
 
             if (Id == null)
             {
-                ViewBag.ErrorMessage = "Account ID IS NOT PRESENT IN DATA, PLEASE FILL CORRECT DATA";
-                return View("Details");
+                ViewBag.ErrorMessage = "Account ID not Found";
+                return View();
             }
 
             if (value == null)
             {
-                ViewBag.ErrorMessage = "Account ID IS NOT PRESENT IN DATA, PLEASE FILL CORRECT DATA";
-                return RedirectToAction("Details");
+                ViewBag.ErrorMessage = "Account ID not Found";
+                return View();
             }
             return View("Deposit", value);
         }
@@ -207,7 +207,16 @@ namespace FedChoice_Bank.Controllers
             db.Account.Find(id).Balance += val;
 
             db.SaveChanges();
+
+
             var value = db.Account.Find(id);
+
+            StatusDbContext statusDbContext = new StatusDbContext();
+            var temp = statusDbContext.Status.Where(m => m.AccountId == id).FirstOrDefault();
+            temp.Message = "Amount Deposited";
+            temp.LastUpdated = DateTime.Now;
+            statusDbContext.SaveChanges();
+
             return View("DepositAfter1", value);
 
 
@@ -227,14 +236,14 @@ namespace FedChoice_Bank.Controllers
 
             if (Id == null)
             {
-                ViewBag.ErrorMessage = "Account ID IS NOT PRESENT IN DATA, PLEASE FILL CORRECT DATA";
-                return View("Details");
+                ViewBag.ErrorMessage = "Account ID not found";
+                return View();
             }
 
             if (value == null)
             {
-                ViewBag.ErrorMessage = "Account ID IS NOT PRESENT IN DATA, PLEASE FILL CORRECT DATA";
-                return RedirectToAction("Details");
+                ViewBag.ErrorMessage = "Account ID not found";
+                return View();
             }
             return View("Withdraw", value);
         }
@@ -247,6 +256,13 @@ namespace FedChoice_Bank.Controllers
 
             db.SaveChanges();
             var value = db.Account.Find(id);
+
+            StatusDbContext statusDbContext = new StatusDbContext();
+            var temp = statusDbContext.Status.Where(m => m.AccountId == id).FirstOrDefault();
+            temp.Message = "Amount Withdrawed";
+            temp.LastUpdated = DateTime.Now;
+            statusDbContext.SaveChanges();
+
             return View("WithdrawAfter1", value);
 
 
@@ -266,16 +282,16 @@ namespace FedChoice_Bank.Controllers
 
             if (Id == null)
             {
-                ViewBag.ErrorMessage = "Account ID IS NOT PRESENT IN DATA, PLEASE FILL CORRECT DATA";
-                return View("Details");
+                ViewBag.ErrorMessage = "Account ID not Found";
+                return View();
             }
 
             if (value == null)
             {
-                ViewBag.ErrorMessage = "Account ID IS NOT PRESENT IN DATA, PLEASE FILL CORRECT DATA";
-                return RedirectToAction("Details");
+                ViewBag.ErrorMessage = "Account ID not Found";
+                return View();
             }
-            return View("Transfer1", value);
+            return View("Transfer", value);
         }
 
         public IActionResult Transfer1(Account account, int id1, int? id2, int val)
@@ -286,13 +302,13 @@ namespace FedChoice_Bank.Controllers
 
             if (id2 == null)
             {
-                ViewBag.ErrorMessage = "Account ID IS NOT PRESENT IN DATA, PLEASE FILL CORRECT DATA";
+                ViewBag.ErrorMessage = "Account ID not Found";
                 return View("Transfer");
             }
 
             if (find == null)
             {
-                ViewBag.ErrorMessage = "Account ID IS NOT PRESENT IN DATA, PLEASE FILL CORRECT DATA";
+                ViewBag.ErrorMessage = "Account ID not Found";
                 return View("Transfer");
             }
 
@@ -303,6 +319,14 @@ namespace FedChoice_Bank.Controllers
             db.SaveChanges();
             var value1 = db.Account.Find(id1);
             var value2 = db.Account.Find(id2);
+
+            StatusDbContext statusDbContext = new StatusDbContext();
+            var temp = statusDbContext.Status.Where(m => m.AccountId == id1).FirstOrDefault();
+            temp.Message = "Amount Tranferred";
+
+            temp.LastUpdated = DateTime.Now;
+
+            statusDbContext.SaveChanges();
             return View("TransferAfter1", value1);
 
 

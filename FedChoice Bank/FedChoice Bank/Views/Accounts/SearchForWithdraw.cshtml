@@ -1,15 +1,16 @@
 ﻿@model FedChoice_Bank.Models.Account
 @{
     ViewData["Title"] = "SearchForWithdraw";
+    Layout = "~/Views/Shared/_Layouttwo.cshtml";
 }
 
 
-<h1>SearchAccountID</h1>
+
 <div class="form-group">
     <form asp-controller="Accounts" asp-action="Withdraw" method="get">
-        <table class="tableDesignVeryShort" align="center">
+        <table class="tableDesignShort" align="center">
             <tr>
-                <td colspan="2" class="tdDesign"><h3 class="h3Design">Search</h3></td>
+                <td colspan="2" class="tdDesign"><h3 class="h3Design">Search To Withdraw</h3></td>
             </tr>
             <tr>
 

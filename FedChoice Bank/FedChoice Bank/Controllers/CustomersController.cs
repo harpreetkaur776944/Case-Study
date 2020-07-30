@@ -134,6 +134,7 @@ namespace FedChoice_Bank.Controllers
 
         public IActionResult LogOut()
         {
+           
             HttpContext.Session.Clear();
             return RedirectToAction("Login", "Login");
         }
