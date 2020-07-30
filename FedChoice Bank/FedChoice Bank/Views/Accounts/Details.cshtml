@@ -4,46 +4,54 @@
     ViewData["Title"] = "Details";
 }
 
-<div class="divCenter">
-    <table class="tableDesign" align="center">
-        <tr>
-            <td colspan="2"><h3 class="h3Design">Account Details</h3></td>
-        </tr>
-        <tr>
-            <td class="tdDesign">@Html.DisplayNameFor(model => model.CustomerId)</td>
-            <td class="tdDesign">@Html.DisplayFor(model => model.CustomerId)</td>
-        </tr>
-        <tr>
-            <td class="tdDesign">@Html.DisplayNameFor(model => model.AccountId)</td>
-            <td class="tdDesign">@Html.DisplayFor(model => model.AccountId)</td>
-        </tr>
-        <tr>
-            <td class="tdDesign">@Html.DisplayNameFor(model => model.AccountType)</td>
-            <td class="tdDesign">@Html.DisplayFor(model => model.AccountType)</td>
-        </tr>
-        <tr>
-            <td class="tdDesign">@Html.DisplayNameFor(model => model.Balance)</td>
-            <td class="tdDesign">@Html.DisplayFor(model => model.Balance)</td>
-        </tr>
-        <tr>
-            <td class="tdDesign">@Html.DisplayNameFor(model => model.Crdate)</td>
-            <td class="tdDesign">@Html.DisplayFor(model => model.Crdate)</td>
-        </tr>
-        <tr>
-            <td class="tdDesign"> @Html.DisplayNameFor(model => model.CrlastDate)</td>
-            <td class="tdDesign">@Html.DisplayFor(model => model.CrlastDate)</td>
-        </tr>
-        <tr>
-            <td class="tdDesign"> @Html.DisplayNameFor(model => model.Duration)</td>
-            <td class="tdDesign">@Html.DisplayFor(model => model.Duration)</td>
-        </tr>
-        <tr>
-            <td class="tdDesign text-danger">
-                @ViewBag.message
-            </td>
-            <td class="tdDesign text-danger">
-                @ViewBag.ErrorMessage
-            </td>
-        </tr>
-    </table>
-</div>
+    <div class="divCenter">
+        <table class="tableDesign" align="center">
+            <tr>
+                <td colspan="2"><h3 class="h3Design">Account Details</h3></td>
+            </tr>
+            <tr>
+                <td class="tdDesign">@Html.DisplayNameFor(model => model.CustomerId)</td>
+                <td class="tdDesign">@Html.DisplayFor(model => model.CustomerId)</td>
+            </tr>
+            <tr>
+                <td class="tdDesign">@Html.DisplayNameFor(model => model.AccountId)</td>
+                <td class="tdDesign">@Html.DisplayFor(model => model.AccountId)</td>
+            </tr>
+            <tr>
+                <td class="tdDesign">@Html.DisplayNameFor(model => model.AccountType)</td>
+                <td class="tdDesign">@Html.DisplayFor(model => model.AccountType)</td>
+            </tr>
+            <tr>
+                <td class="tdDesign">@Html.DisplayNameFor(model => model.Balance)</td>
+                <td class="tdDesign">@Html.DisplayFor(model => model.Balance)</td>
+            </tr>
+            <tr>
+                <td class="tdDesign">@Html.DisplayNameFor(model => model.Crdate)</td>
+                <td class="tdDesign">@Html.DisplayFor(model => model.Crdate)</td>
+            </tr>
+            <tr>
+                <td class="tdDesign"> @Html.DisplayNameFor(model => model.CrlastDate)</td>
+                <td class="tdDesign">@Html.DisplayFor(model => model.CrlastDate)</td>
+            </tr>
+            <tr>
+                <td class="tdDesign"> @Html.DisplayNameFor(model => model.Duration)</td>
+                <td class="tdDesign">@Html.DisplayFor(model => model.Duration)</td>
+            </tr>
+
+
+            <tr>
+                <td class="tdDesign text-danger">
+                    @ViewBag.message
+                </td>
+                <td class="tdDesign text-danger">
+                    @ViewBag.ErrorMessage
+                </td>
+            </tr>
+        </table>
+        <a asp-controller="Accounts" asp-action="Deposit" asp-route-id="@Model.AccountId">Deposit</a> |
+        <a asp-controller="Accounts" asp-action="Withdraw" asp-route-id="@Model.AccountId">Withdraw</a> |
+        <a asp-controller="Accounts" asp-action="Transfer" asp-route-id="@Model.AccountId">Transfer</a> |
+
+    </div>
+
+    

@@ -1,0 +1,67 @@
+﻿@model FedChoice_Bank.Models.Account
+@{
+    ViewData["Title"] = "Transfer";
+}
+
+<h1>Transfer</h1>
+
+<div>
+    <table align="center">
+        <tr>
+            <th><h3>Search</h3></th>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <form asp-controller="Accounts" asp-action="Transfer1" method="get">
+                        <dl class="row">
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.CustomerId)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.CustomerId)
+
+                            </dd>
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.AccountId)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.AccountId)
+
+                            </dd>
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.AccountType)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.AccountType)
+                            </dd>
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.Balance)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.Balance)
+                            </dd>
+                        </dl>
+
+
+
+
+                        <p>
+                            Source Account ID : <input type="text" name="id1" />
+                            Destination Account ID : <input type="text" name="id2" />
+                            Transfer amount : <input type="text" name="val" />
+
+                            <input type="submit" value="Transfer" />
+
+                    </form>
+
+                </div>
+            </td>
+        </tr>
+        @ViewBag.message
+        @ViewBag.ErrorMessage
+    </table>
+
+    <a asp-action="Index">Back to Account Home</a>
+</div>
+

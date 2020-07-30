@@ -103,13 +103,13 @@ namespace FedChoice_Bank.Controllers
             }
         }
 
-        public IActionResult DetailsCustomerId(int? Id, string type)
+        public IActionResult DetailsCustomerId(int? Id1, string type)
         {
             AccountDbContext cs = new AccountDbContext();
 
-            var value = cs.Account.Where(m => m.CustomerId == Id && m.AccountType == type).FirstOrDefault();
+            var value = cs.Account.Where(m => m.CustomerId == Id1 && m.AccountType == type).FirstOrDefault();
 
-            if (Id == null)
+            if (Id1 == null)
             {
                 ViewBag.ErrorMessage = "Customer ID not Found";
                 return View();
@@ -161,7 +161,7 @@ namespace FedChoice_Bank.Controllers
             {
                 db.Account.Remove(value);
                 db.SaveChanges();
-                ViewBag.message = "The Record " + Id + "is Deleted Successfully.";
+                ViewBag.message = "The Record " + Id + " is Deleted Successfully.";
 
                 var statusUpdate = statusDbContext.Status.Where(m => m.AccountId==Id && m.AccountType == type).FirstOrDefault();
                 statusUpdate.Message = "Account is deleted.";
@@ -180,6 +180,139 @@ namespace FedChoice_Bank.Controllers
             return View(statusDbContext.Status.ToList());
         }
 
+        public IActionResult Deposit(int? Id)
+        {
+            AccountDbContext cs = new AccountDbContext();
+
+            var value = cs.Account.Where(m => m.AccountId == Id).FirstOrDefault();
+
+            if (Id == null)
+            {
+                ViewBag.ErrorMessage = "Account ID IS NOT PRESENT IN DATA, PLEASE FILL CORRECT DATA";
+                return View("Details");
+            }
+
+            if (value == null)
+            {
+                ViewBag.ErrorMessage = "Account ID IS NOT PRESENT IN DATA, PLEASE FILL CORRECT DATA";
+                return RedirectToAction("Details");
+            }
+            return View("Deposit", value);
+        }
+
+        public IActionResult Deposit1(Account account, int id, int val)
+        {
+            AccountDbContext db = new AccountDbContext();
+
+            db.Account.Find(id).Balance += val;
+
+            db.SaveChanges();
+            var value = db.Account.Find(id);
+            return View("DepositAfter1", value);
+
+
+
+        }
+
+        public IActionResult DepositAfter1()
+        {
+            return View();
+        }
+
+        public IActionResult Withdraw(int? Id)
+        {
+            AccountDbContext cs = new AccountDbContext();
+
+            var value = cs.Account.Where(m => m.AccountId == Id).FirstOrDefault();
+
+            if (Id == null)
+            {
+                ViewBag.ErrorMessage = "Account ID IS NOT PRESENT IN DATA, PLEASE FILL CORRECT DATA";
+                return View("Details");
+            }
+
+            if (value == null)
+            {
+                ViewBag.ErrorMessage = "Account ID IS NOT PRESENT IN DATA, PLEASE FILL CORRECT DATA";
+                return RedirectToAction("Details");
+            }
+            return View("Withdraw", value);
+        }
+
+        public IActionResult Withdraw1(Account account, int id, int val)
+        {
+            AccountDbContext db = new AccountDbContext();
+
+            db.Account.Find(id).Balance -= val;
+
+            db.SaveChanges();
+            var value = db.Account.Find(id);
+            return View("WithdrawAfter1", value);
+
+
+
+        }
+
+        public IActionResult WithdrawAfter1()
+        {
+            return View();
+        }
+
+        public IActionResult Transfer(int? Id)
+        {
+            AccountDbContext cs = new AccountDbContext();
+
+            var value = cs.Account.Where(m => m.AccountId == Id).FirstOrDefault();
+
+            if (Id == null)
+            {
+                ViewBag.ErrorMessage = "Account ID IS NOT PRESENT IN DATA, PLEASE FILL CORRECT DATA";
+                return View("Details");
+            }
+
+            if (value == null)
+            {
+                ViewBag.ErrorMessage = "Account ID IS NOT PRESENT IN DATA, PLEASE FILL CORRECT DATA";
+                return RedirectToAction("Details");
+            }
+            return View("Transfer1", value);
+        }
+
+        public IActionResult Transfer1(Account account, int id1, int? id2, int val)
+        {
+            AccountDbContext db = new AccountDbContext();
+
+            var find = db.Account.Where(m => m.AccountId == id2).FirstOrDefault();
+
+            if (id2 == null)
+            {
+                ViewBag.ErrorMessage = "Account ID IS NOT PRESENT IN DATA, PLEASE FILL CORRECT DATA";
+                return View("Transfer");
+            }
+
+            if (find == null)
+            {
+                ViewBag.ErrorMessage = "Account ID IS NOT PRESENT IN DATA, PLEASE FILL CORRECT DATA";
+                return View("Transfer");
+            }
+
+            db.Account.Find(id1).Balance -= val;
+            db.Account.Find(id2).Balance += val;
+
+
+            db.SaveChanges();
+            var value1 = db.Account.Find(id1);
+            var value2 = db.Account.Find(id2);
+            return View("TransferAfter1", value1);
+
+
+
+        }
+
+        public IActionResult TransferAfter1()
+        {
+            return View();
+        }
 
     }
 }

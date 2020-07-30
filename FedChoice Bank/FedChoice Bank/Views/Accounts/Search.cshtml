@@ -20,6 +20,13 @@
                                 <td><label class="control-label">Enter Account ID: </label></td>
                                 <td><input name="Id" type="text" class="form-control" /></td>
                             </tr>
+                            <tr>
+                                <td class="tdButtonDesign" colspan="2">
+                                    <span class="form-group">
+                                        <input type="submit" value="Search" class="buttonDesign" />
+                                    </span>
+                                </td>
+                            </tr>
                         </table>
                     </form>
                 </div>
@@ -36,12 +43,12 @@
                             <tr>
 
                                 <td><label class="control-label">Enter Customer ID:  </label></td>
-                                <td><input name="Id" type="text" class="form-control" /></td>
+                                <td><input name="Id1" type="text" class="form-control" /></td>
 
                             </tr>
                             <tr>
                                 <td><label class="control-label">Enter Account Type:  </label></td>
-                                <td><input name="Id" type="text" class="form-control" /></td>
+                                <td><input name="type" type="text" class="form-control" /></td>
                             </tr>
                             <tr>
                                 <td class="tdButtonDesign" colspan="2">
@@ -51,6 +58,7 @@
                                 </td>
                             </tr>
                             <tr>
+                                <td colspan="3" class="tdDesignValidate"><span> @ViewBag.message</span></td>
                                 <td colspan="3" class="tdDesignValidate"><span> @ViewBag.ErrorMessage</span></td>
                             </tr>
                         </table>

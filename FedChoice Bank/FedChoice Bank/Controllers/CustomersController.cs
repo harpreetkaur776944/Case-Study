@@ -169,7 +169,7 @@ namespace FedChoice_Bank.Controllers
                     ViewBag.message = "The Customer " + Id + "is Deleted Successfully.";
 
                     var customer = statusDbContext.Status.Where(m => m.CustomerId == Id).FirstOrDefault();
-                    customer.Message = "Customer is deleted.";
+                    customer.Message = "Customer is deleted";
                     customer.LastUpdated = DateTime.Now;
                     customer.Status1 = "Closed";
                     statusDbContext.SaveChanges();
@@ -200,13 +200,13 @@ namespace FedChoice_Bank.Controllers
 
             if (Id == null)
             {
-                ViewBag.ErrorMessage = "Customer SSNID not Found.";
+                ViewBag.ErrorMessage = "Customer ID not Found.";
                 return View("EditSearch");
             }
 
             if (value == null)
             {
-                ViewBag.ErrorMessage = "Customer SSNID not Found.";
+                ViewBag.ErrorMessage = "Customer ID not Found.";
                 return RedirectToAction("EditSearch");
             }
             else
